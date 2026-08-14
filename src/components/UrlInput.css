@@ -1,0 +1,73 @@
+.url-input-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.url-input-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.url-input-group {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.url-input-field {
+  flex: 1;
+  height: 44px;
+  padding: 0 14px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.url-input-field::placeholder {
+  color: var(--text-muted);
+}
+
+.url-input-field:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-muted);
+  outline: none;
+}
+
+.url-input-submit {
+  flex-shrink: 0;
+  height: 44px;
+  padding: 0 20px;
+  background: var(--accent);
+  color: #fff;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.url-input-submit:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.url-input-submit:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .url-input-group {
+    flex-direction: column;
+  }
+
+  .url-input-submit {
+    width: 100%;
+  }
+}
