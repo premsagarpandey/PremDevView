@@ -10,8 +10,8 @@
 }
 
 .empty-state-icon {
-  width: 96px;
-  height: 96px;
+  width: 160px;
+  height: 160px;
   object-fit: contain;
   margin-bottom: 20px;
   animation: floatPulse 3s ease-in-out infinite;

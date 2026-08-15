@@ -33,14 +33,11 @@ export function PhoneScreen({
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
 
-  // Use ResizeObserver to determine how much the visual container has been scaled
-  // relative to the true CSS viewport width, then apply that exact scale to the iframe.
   useEffect(() => {
     if (!containerRef.current) return;
 
     const observer = new ResizeObserver((entries) => {
       for (const entry of entries) {
-        // The actual visual pixel width of the container on screen
         const visualWidth = entry.contentRect.width;
         if (visualWidth > 0 && width > 0) {
           setScale(visualWidth / width);
@@ -56,7 +53,6 @@ export function PhoneScreen({
     <div
       ref={containerRef}
       className="phone-screen"
-      // The container fills the parent (which enforces the aspect-ratio)
     >
       {status === 'idle' && <EmptyState />}
 
@@ -81,10 +77,8 @@ export function PhoneScreen({
           sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-popups-to-escape-sandbox"
           allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone"
           style={{
-            // The iframe MUST have the exact CSS viewport dimensions
             width: `${width}px`,
             height: `${height}px`,
-            // Scale it perfectly to fit the responsive visual container
             transform: `scale(${scale})`,
             transformOrigin: 'top left',
             opacity: status === 'loaded' ? 1 : 0,

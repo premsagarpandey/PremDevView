@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Your Localhost. In Your Pocket. Preview your localhost website inside a virtual Android phone.",
+  "description": "PREVIEW. TEST. GO MOBILE. Preview your localhost website inside a virtual Android phone.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

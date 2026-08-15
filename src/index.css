@@ -4,11 +4,11 @@
 
 :root {
   /* Backgrounds */
-  --bg-primary: #202124;
-  --bg-secondary: #101018;
-  --bg-tertiary: #181824;
-  --bg-elevated: #1e1e2e;
-  --bg-surface: #252536;
+  --bg-primary: #09090b;
+  --bg-secondary: #000000;
+  --bg-tertiary: #121214;
+  --bg-elevated: #18181b;
+  --bg-surface: #27272a;
 
   /* Text */
   --text-primary: #f0f0f8;
@@ -17,10 +17,10 @@
   --text-muted: #44445a;
 
   /* Accent */
-  --accent: #6366f1;
-  --accent-hover: #818cf8;
-  --accent-muted: rgba(99, 102, 241, 0.15);
-  --accent-glow: rgba(99, 102, 241, 0.25);
+  --accent: #06b6d4;
+  --accent-hover: #22d3ee;
+  --accent-muted: rgba(6, 182, 212, 0.15);
+  --accent-glow: rgba(6, 182, 212, 0.25);
 
   /* Semantic */
   --success: #22c55e;
@@ -67,7 +67,7 @@
   --space-3xl: 48px;
 
   /* Typography */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-size-xs: 11px;
   --font-size-sm: 13px;
   --font-size-base: 14px;

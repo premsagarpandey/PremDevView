@@ -27,24 +27,20 @@ export function PhoneFrame({
   onIframeError,
   onAddressBarClick,
 }: PhoneFrameProps) {
-  // Extract the displayable URL (without reload query param)
   const displayUrl = currentUrl.replace(/[?&]_pdv_r=\d+/, '');
 
   return (
     <div 
       className="phone-frame-container"
       style={{
-        // We pass the exact CSS viewport dimensions as variables
         '--viewport-width': dimensions.width,
         '--viewport-height': dimensions.height,
 
       } as React.CSSProperties}
     >
       <div className="phone-frame">
-        {/* Android Camera Punch-hole */}
         <div className="phone-frame-camera"></div>
 
-        {/* Screen area (the exact aspect-ratio container) */}
         <div className="phone-frame-screen">
           <StatusBar displayUrl={displayUrl} onClick={onAddressBarClick} />
           <PhoneScreen
