@@ -33,6 +33,12 @@ export function Header({ currentPage, onNavigate, theme, toggleTheme }: HeaderPr
           >
             About
           </button>
+          <button
+            className={`header-nav-link ${currentPage === 'how-to' ? 'active' : ''}`}
+            onClick={() => onNavigate('how-to')}
+          >
+            How to Use
+          </button>
           <a
             className="header-nav-link"
             href="https://github.com"

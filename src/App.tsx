@@ -2,9 +2,10 @@ import { useState, useCallback } from 'react';
 import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
+import { HowToUsePage } from './pages/HowToUsePage';
 import { useTheme } from './hooks/useTheme';
 
-type Page = 'home' | 'about';
+type Page = 'home' | 'about' | 'how-to';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -26,6 +27,7 @@ function App() {
       <div className="app-content">
         {currentPage === 'home' && <HomePage />}
         {currentPage === 'about' && <AboutPage />}
+        {currentPage === 'how-to' && <HowToUsePage />}
       </div>
     </div>
   );
