@@ -10,7 +10,9 @@
 }
 
 .empty-state-icon {
-  font-size: 56px;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
   margin-bottom: 20px;
   animation: floatPulse 3s ease-in-out infinite;
 }

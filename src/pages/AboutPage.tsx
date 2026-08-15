@@ -79,7 +79,7 @@ export function AboutPage() {
 
         <section className="about-section about-section-footer">
           <p>
-            <strong>PremDevView</strong> · Your Localhost. In Your Pocket. 📱
+            <strong>PremDevView</strong> · Your Localhost. In Your Pocket. <img src="/logo.png" alt="Logo" style={{ width: '16px', height: '16px', verticalAlign: 'middle', marginLeft: '4px' }} />
           </p>
         </section>
       </div>

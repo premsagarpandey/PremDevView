@@ -1,28 +1,23 @@
-import { useState } from 'react';
 import { PhoneScreen } from './PhoneScreen';
 import { StatusBar } from './StatusBar';
+import type { ErrorType } from '../hooks/usePreview';
 import './PhoneFrame.css';
 
 interface PhoneFrameProps {
   dimensions: { width: number; height: number };
-  isLandscape: boolean;
 
   status: 'idle' | 'loading' | 'loaded' | 'error';
   currentUrl: string;
-  errorType?: 'network' | 'timeout' | 'security' | 'not-found';
+  errorType?: ErrorType | null;
   errorMessage?: string;
-  iframeRef?: React.RefObject<HTMLIFrameElement>;
+  iframeRef?: React.RefObject<HTMLIFrameElement | null>;
   onIframeLoad?: () => void;
   onIframeError?: () => void;
-  onBack?: () => void;
-  onHome?: () => void;
   onAddressBarClick?: () => void;
 }
 
 export function PhoneFrame({
   dimensions,
-  isLandscape, // No longer used for CSS classes since dimensions are pre-swapped by useViewport
-
   status,
   currentUrl,
   errorType,
@@ -55,13 +50,13 @@ export function PhoneFrame({
           <PhoneScreen
             status={status}
             currentUrl={currentUrl}
-            errorType={errorType}
-            errorMessage={errorMessage}
+            errorType={errorType || null}
+            errorMessage={errorMessage || ''}
             width={dimensions.width}
             height={dimensions.height}
-            iframeRef={iframeRef}
-            onLoad={onIframeLoad}
-            onError={onIframeError}
+            iframeRef={iframeRef || { current: null }}
+            onLoad={onIframeLoad || (() => {})}
+            onError={onIframeError || (() => {})}
           />
         </div>
       </div>

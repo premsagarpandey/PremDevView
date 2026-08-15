@@ -16,7 +16,7 @@ export function Header({ currentPage, onNavigate, theme, toggleTheme }: HeaderPr
           onClick={() => onNavigate('home')}
           aria-label="PremDevView Home"
         >
-          <span className="header-logo">📱</span>
+          <img src="/logo.png" alt="PremDevView Logo" className="header-logo" />
           <span className="header-title">PremDevView</span>
         </button>
 

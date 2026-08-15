@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { usePreview } from '../hooks/usePreview';
 import { useViewport } from '../hooks/useViewport';
 
@@ -12,18 +12,9 @@ export function HomePage() {
   const [previewState, previewActions] = usePreview();
   const [viewportState, viewportActions] = useViewport();
 
-  const [fullscreenState, fullscreenActions] = useFullscreen();
+  const [, fullscreenActions] = useFullscreen();
 
   const [showUrlInput, setShowUrlInput] = useState(false);
-
-  const hasPreview = previewState.status === 'loaded';
-
-  const handleScreenshot = useCallback(() => {
-    alert(
-      'Screenshot capture is limited by cross-origin iframe restrictions.\n\n' +
-      'Tip: Use your browser\'s built-in screenshot tool, or press Ctrl+Shift+S in some browsers.'
-    );
-  }, []);
 
   // Register keyboard shortcuts
   useKeyboardShortcuts({
@@ -76,8 +67,6 @@ export function HomePage() {
       <section className="canvas-phone">
         <PhoneFrame
           dimensions={viewportState.dimensions}
-          isLandscape={viewportState.isLandscape}
-
           status={previewState.status}
           currentUrl={previewState.currentUrl}
           errorType={previewState.errorType}
@@ -85,8 +74,6 @@ export function HomePage() {
           iframeRef={previewActions.iframeRef}
           onIframeLoad={previewActions.onIframeLoad}
           onIframeError={previewActions.onIframeError}
-          onBack={previewActions.goBack}
-          onHome={previewActions.goHome}
           onAddressBarClick={() => setShowUrlInput(true)}
         />
         
