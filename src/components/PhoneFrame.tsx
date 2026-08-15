@@ -1,5 +1,4 @@
 import { PhoneScreen } from './PhoneScreen';
-import { StatusBar } from './StatusBar';
 import type { ErrorType } from '../hooks/usePreview';
 import './PhoneFrame.css';
 
@@ -42,7 +41,6 @@ export function PhoneFrame({
         <div className="phone-frame-camera"></div>
 
         <div className="phone-frame-screen">
-          <StatusBar displayUrl={displayUrl} onClick={onAddressBarClick} />
           <PhoneScreen
             status={status}
             currentUrl={currentUrl}
@@ -53,6 +51,8 @@ export function PhoneFrame({
             iframeRef={iframeRef || { current: null }}
             onLoad={onIframeLoad || (() => {})}
             onError={onIframeError || (() => {})}
+            displayUrl={displayUrl}
+            onAddressBarClick={onAddressBarClick}
           />
         </div>
       </div>

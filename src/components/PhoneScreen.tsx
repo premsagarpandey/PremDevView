@@ -3,6 +3,7 @@ import type { PreviewStatus, ErrorType } from '../hooks/usePreview';
 import { EmptyState } from './EmptyState';
 import { LoadingState } from './LoadingState';
 import { ErrorState } from './ErrorState';
+import { StatusBar } from './StatusBar';
 import './PhoneScreen.css';
 
 interface PhoneScreenProps {
@@ -15,6 +16,8 @@ interface PhoneScreenProps {
   iframeRef: React.RefObject<HTMLIFrameElement | null>;
   onLoad: () => void;
   onError: () => void;
+  displayUrl: string;
+  onAddressBarClick?: () => void;
 }
 
 export function PhoneScreen({
@@ -27,6 +30,8 @@ export function PhoneScreen({
   iframeRef,
   onLoad,
   onError,
+  displayUrl,
+  onAddressBarClick,
 }: PhoneScreenProps) {
   const showIframe = status === 'loading' || status === 'loaded';
   
@@ -67,24 +72,37 @@ export function PhoneScreen({
       )}
 
       {showIframe && currentUrl && (
-        <iframe
-          ref={iframeRef}
-          className="phone-screen-iframe"
-          src={currentUrl}
-          title="Website Preview"
-          onLoad={onLoad}
-          onError={onError}
-          sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-popups-to-escape-sandbox"
-          allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone"
+        <div 
+          className="phone-screen-scaled-wrapper"
           style={{
-            // Add 18px to hide the native desktop scrollbar outside the overflow: hidden container
-            width: `${width + 18}px`,
+            width: `${width}px`,
             height: `${height}px`,
             transform: `scale(${scale})`,
             transformOrigin: 'top left',
             opacity: status === 'loaded' ? 1 : 0,
+            display: 'flex',
+            flexDirection: 'column'
           }}
-        />
+        >
+          <StatusBar displayUrl={displayUrl} onClick={onAddressBarClick} />
+          
+          <div className="phone-screen-iframe-container" style={{ flex: 1, overflow: 'hidden' }}>
+            <iframe
+              ref={iframeRef}
+              className="phone-screen-iframe"
+              src={currentUrl}
+              title="Website Preview"
+              onLoad={onLoad}
+              onError={onError}
+              sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-popups-to-escape-sandbox"
+              allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone"
+              style={{
+                width: `${width + 18}px`,
+                height: `100%`,
+              }}
+            />
+          </div>
+        </div>
       )}
     </div>
   );
