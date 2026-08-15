@@ -77,7 +77,8 @@ export function PhoneScreen({
           sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-popups-to-escape-sandbox"
           allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone"
           style={{
-            width: `${width}px`,
+            // Add 18px to hide the native desktop scrollbar outside the overflow: hidden container
+            width: `${width + 18}px`,
             height: `${height}px`,
             transform: `scale(${scale})`,
             transformOrigin: 'top left',
