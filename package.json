@@ -6,7 +6,7 @@
   "description": "PREVIEW. TEST. GO MOBILE. Preview your localhost website inside a virtual Android phone.",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node ./node_modules/vite/bin/vite.js build",
     "preview": "vite preview"
   },
   "dependencies": {
