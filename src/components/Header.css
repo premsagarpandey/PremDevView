@@ -67,8 +67,8 @@
 }
 
 .header-nav-link.active {
-  color: var(--accent);
-  background: rgba(99, 102, 241, 0.1);
+  color: var(--bg-primary);
+  background: var(--text-primary);
 }
 
 a.header-nav-link {

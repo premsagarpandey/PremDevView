@@ -10,18 +10,28 @@
 
 .phone-frame {
   position: relative;
-  /* Make it larger and reduce top/bottom reserved space */
+  box-sizing: content-box;
+  
+  /* Maintain exact size up to viewport dimensions, gracefully scale down if screen is small */
   width: min(
-    95vw, 
-    calc((100vh - 30px) * var(--viewport-width) / var(--viewport-height))
+    calc(var(--viewport-width) * 1px),
+    calc(95vw - 16px),
+    calc((90vh - 16px) * var(--viewport-width) / var(--viewport-height))
   );
-  height: auto;
+  
+  height: min(
+    calc(var(--viewport-height) * 1px),
+    calc(90vh - 16px),
+    calc((95vw - 16px) * var(--viewport-height) / var(--viewport-width))
+  );
   
   /* Ultra-premium sleek matte black finish */
   background: #111111;
-  border-radius: 46px; /* Sleeker curves */
-  /* Ultra thin bezel padding */
-  padding: 8px;
+  border-radius: 46px;
+  
+  /* Symmetrical bezel using border instead of padding */
+  border: 8px solid #111111;
+  padding: 0;
   
   /* High-end realistic shadows and subtle metallic edge highlights */
   box-shadow:
@@ -33,7 +43,7 @@
     0 0 0 1px rgba(0,0,0,0.9);
   flex-shrink: 0;
   
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Left side buttons (Action + Volume) */
@@ -49,6 +59,7 @@
   box-shadow: 
     inset -1px 0 1px rgba(0,0,0,0.5),
     0 2px 4px rgba(0,0,0,0.5);
+  transition: all 0.3s;
 }
 
 /* Right side button (Power) */
@@ -64,14 +75,13 @@
   box-shadow: 
     inset 1px 0 1px rgba(0,0,0,0.5),
     0 2px 4px rgba(0,0,0,0.5);
+  transition: all 0.3s;
 }
-
-/* Add second volume button on left using an extra div if we had one, but we can just simulate it or keep it sleek. */
 
 /* Sleek Camera Punch-hole */
 .phone-frame-camera {
   position: absolute;
-  top: 16px; /* Moved up due to thinner bezels */
+  top: 16px;
   left: 50%;
   transform: translateX(-50%);
   width: 12px;
@@ -79,19 +89,45 @@
   background: #000;
   border-radius: 50%;
   z-index: 100;
-  /* Realistic lens reflection */
   box-shadow: 
     inset 0 0 4px rgba(255, 255, 255, 0.1), 
     inset -2px -2px 3px rgba(255, 255, 255, 0.1),
     inset 1px 1px 2px rgba(80, 120, 255, 0.4),
     0 0 0 1px rgba(255,255,255,0.05);
+  transition: all 0.3s;
+}
+
+/* Landscape Mode Adjustments */
+.phone-frame.landscape .phone-frame-camera {
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+}
+
+.phone-frame.landscape::before {
+  left: 15%;
+  top: -3px;
+  width: 6%;
+  height: 3px;
+  background: linear-gradient(to top, #292a2d, #44474d);
+  border-radius: 3px 3px 0 0;
+}
+
+.phone-frame.landscape::after {
+  right: 30%;
+  top: auto;
+  bottom: -3px;
+  width: 10%;
+  height: 3px;
+  background: linear-gradient(to bottom, #292a2d, #44474d);
+  border-radius: 0 0 3px 3px;
 }
 
 /* Screen area */
 .phone-frame-screen {
   position: relative;
   width: 100%;
-  aspect-ratio: var(--viewport-width) / var(--viewport-height);
+  height: 100%;
   display: flex;
   flex-direction: column;
   /* Corner radius tight to the outer bezel */

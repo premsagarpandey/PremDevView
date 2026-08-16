@@ -15,10 +15,6 @@ export interface PreviewState {
 
 export interface PreviewActions {
   loadUrl: (input: string) => void;
-  reload: () => void;
-  goBack: () => void;
-  goForward: () => void;
-  goHome: () => void;
   onIframeLoad: () => void;
   onIframeError: () => void;
   iframeRef: React.RefObject<HTMLIFrameElement | null>;
@@ -30,7 +26,6 @@ export function usePreview(): [PreviewState, PreviewActions] {
   const [status, setStatus] = useState<PreviewStatus>('idle');
   const [errorType, setErrorType] = useState<ErrorType | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
-  const [reloadKey, setReloadKey] = useState(0);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const loadTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -67,41 +62,7 @@ export function usePreview(): [PreviewState, PreviewActions] {
     [setSavedUrl]
   );
 
-  const reload = useCallback(() => {
-    if (currentUrl) {
-      setStatus('loading');
-      setErrorType(null);
-      setErrorMessage('');
-      setReloadKey((k) => k + 1);
-    }
-  }, [currentUrl]);
 
-  const goBack = useCallback(() => {
-    try {
-      if (iframeRef.current?.contentWindow) {
-        iframeRef.current.contentWindow.history.back();
-      }
-    } catch {
-      // Cross-origin security prevents history access — silently ignore
-    }
-  }, []);
-
-  const goForward = useCallback(() => {
-    try {
-      if (iframeRef.current?.contentWindow) {
-        iframeRef.current.contentWindow.history.forward();
-      }
-    } catch {
-      // Cross-origin security prevents history access — silently ignore
-    }
-  }, []);
-
-  const goHome = useCallback(() => {
-    setCurrentUrl('');
-    setStatus('idle');
-    setErrorType(null);
-    setErrorMessage('');
-  }, []);
 
   const onIframeLoad = useCallback(() => {
     if (loadTimeoutRef.current) {
@@ -122,7 +83,7 @@ export function usePreview(): [PreviewState, PreviewActions] {
   }, []);
 
   // Derive the iframe src — append reload key to force refresh
-  const iframeSrc = currentUrl ? `${currentUrl}${currentUrl.includes('?') ? '&' : '?'}_pdv_r=${reloadKey}` : '';
+  const iframeSrc = currentUrl ? currentUrl : '';
 
   useEffect(() => {
     if (typeof window !== 'undefined' && status === 'idle' && !currentUrl) {
@@ -144,10 +105,6 @@ export function usePreview(): [PreviewState, PreviewActions] {
     },
     {
       loadUrl,
-      reload,
-      goBack,
-      goForward,
-      goHome,
       onIframeLoad,
       onIframeError,
       iframeRef,

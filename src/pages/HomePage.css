@@ -6,8 +6,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: var(--bg-primary); /* Match screenshot canvas color */
   overflow: hidden;
   position: relative;
@@ -19,8 +19,10 @@
    ---------------------------------- */
 .floating-toolbar {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 50%;
+  bottom: auto;
+  right: 24px;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -31,12 +33,11 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  background: rgba(39, 39, 42, 0.4);
-  backdrop-filter: blur(12px);
-  padding: 6px;
-  border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  /* Remove the glassy background from the group so the button pops */
+  background: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
 }
 
 .toolbar-btn {
@@ -54,16 +55,33 @@
   position: relative;
 }
 
-.toolbar-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
-  transform: translateY(-1px);
+.toolbar-btn.text-btn {
+  width: auto;
+  height: auto;
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Primary style: contrasting colors (black in light theme, white in dark theme) */
+.toolbar-btn.primary-btn {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.toolbar-btn.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  /* Slightly fade text or bg on hover if desired, but keep it solid */
+  opacity: 0.95;
 }
 
 .toolbar-btn:active {
   transform: translateY(1px) scale(0.95);
 }
-
 
 
 /* ----------------------------------

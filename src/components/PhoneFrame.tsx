@@ -4,7 +4,7 @@ import './PhoneFrame.css';
 
 interface PhoneFrameProps {
   dimensions: { width: number; height: number };
-
+  isLandscape?: boolean;
   status: 'idle' | 'loading' | 'loaded' | 'error';
   currentUrl: string;
   errorType?: ErrorType | null;
@@ -17,6 +17,7 @@ interface PhoneFrameProps {
 
 export function PhoneFrame({
   dimensions,
+  isLandscape,
   status,
   currentUrl,
   errorType,
@@ -34,10 +35,9 @@ export function PhoneFrame({
       style={{
         '--viewport-width': dimensions.width,
         '--viewport-height': dimensions.height,
-
       } as React.CSSProperties}
     >
-      <div className="phone-frame">
+      <div className={`phone-frame ${isLandscape ? 'landscape' : ''}`}>
         <div className="phone-frame-camera"></div>
 
         <div className="phone-frame-screen">
