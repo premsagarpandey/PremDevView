@@ -6,7 +6,7 @@
   "description": "PREVIEW. TEST. GO MOBILE. Preview your localhost website inside a virtual Android phone.",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -19,8 +19,5 @@
     "@vitejs/plugin-react": "^4.4.1",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
-  },
-  "allowScripts": {
-    "esbuild@0.25.12": true
   }
 }
