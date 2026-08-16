@@ -20,9 +20,19 @@ export function validateUrl(input: string): ValidationResult {
     return { valid: false, url: '', error: 'Please enter a URL.' };
   }
 
-  // Auto-prepend http:// if missing protocol but looks like localhost
+  // Make URL parsing extremely forgiving
   let urlString = trimmed;
-  if (/^localhost(:\d+)?/.test(urlString)) {
+  
+  // If user just types a port number like "5500" or "5500/..."
+  if (/^\d{3,5}(\/|$)/.test(urlString)) {
+    urlString = `http://127.0.0.1:${urlString}`;
+  } 
+  // If user types localhost or 127.0.0.1 without protocol
+  else if (/^(localhost|127\.0\.0\.1)(:\d+)?/i.test(urlString)) {
+    urlString = `http://${urlString}`;
+  } 
+  // If user types a domain without protocol (e.g. google.com)
+  else if (!/^https?:\/\//i.test(urlString)) {
     urlString = `http://${urlString}`;
   }
 

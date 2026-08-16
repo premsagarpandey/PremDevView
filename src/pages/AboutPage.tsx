@@ -9,71 +9,54 @@ export function AboutPage() {
         <section className="about-section">
           <h2>What is PremDevView?</h2>
           <p>
-            PremDevView is a lightweight, free developer tool for previewing websites inside
-            a mobile-sized Android viewport. Instead of fiddling with Chrome DevTools' device
-            toolbar, simply enter your localhost URL and see your website inside a beautiful
-            virtual phone.
+            PremDevView is a beautifully crafted, lightweight developer tool built for previewing websites
+            inside a pixel-perfect virtual mobile device. Say goodbye to the clunky Chrome DevTools device
+            toolbar — just enter your localhost or production URL and experience your responsive designs
+            in an immersive, distraction-free environment.
           </p>
         </section>
 
         <section className="about-section">
-          <h2>How It Works</h2>
-          <p>
-            PremDevView loads your website inside an <code>iframe</code> within a virtual phone
-            frame. The iframe is sized to the exact mobile viewport dimensions you select, so
-            your website renders its responsive layout as it would on a real device.
-          </p>
-          <p>
-            Everything runs in your browser — no backend, no data collection, no tracking.
-            Your URLs never leave your machine.
-          </p>
-        </section>
-
-        <section className="about-section">
-          <h2>Browser-Based Limitations</h2>
-          <p>
-            Because PremDevView is a web application using iframes, there are inherent browser
-            security limitations:
-          </p>
+          <h2>Key Features</h2>
           <ul>
             <li>
-              <strong>X-Frame-Options / CSP:</strong> Websites that set <code>X-Frame-Options: DENY</code> or
-              restrictive <code>Content-Security-Policy</code> headers cannot be displayed inside iframes.
-              PremDevView cannot bypass these restrictions.
+              <strong>Pixel-Perfect Rendering:</strong> Your website is loaded inside a perfectly scaled
+              iframe that accurately mimics an Android device viewport.
             </li>
             <li>
-              <strong>CORS:</strong> Cross-origin security policies may prevent certain interactions
-              between PremDevView and the previewed website.
+              <strong>Cinematic Rotation:</strong> Switch seamlessly between Portrait and Landscape orientations 
+              with hardware-accelerated animations and mathematically perfect bezel symmetry.
             </li>
             <li>
-              <strong>Localhost detection:</strong> Browser security restricts reliable detection of
-              running localhost servers from a hosted web page. The "Try Common Ports" feature uses
-              best-effort detection and may not always be accurate.
-            </li>
-            <li>
-              <strong>HMR / Hot Reload:</strong> Development server hot module replacement (HMR) may
-              work when PremDevView is served from the same origin, but cross-origin iframe restrictions
-              can interfere with WebSocket connections used by Vite, webpack, etc.
+              <strong>Zero Backend:</strong> Everything runs 100% locally in your browser. No data collection,
+              no tracking, and your URLs never leave your machine.
             </li>
           </ul>
         </section>
 
         <section className="about-section">
-          <h2>Future Plans</h2>
+          <h2>Browser Limitations</h2>
           <p>
-            A Chrome Extension is planned that will provide deeper localhost integration, automatic
-            port detection, and the ability to embed websites that restrict iframes. The core
-            architecture is built to support this future expansion.
+            Because PremDevView runs entirely in the browser using iframes, some security restrictions apply:
           </p>
+          <ul>
+            <li>
+              <strong>X-Frame-Options:</strong> Websites enforcing restrictive headers (like <code>DENY</code>) 
+              cannot be embedded. This tool is best used for your own local development servers where you control the headers.
+            </li>
+            <li>
+              <strong>HMR (Hot Reloading):</strong> Development servers that strictly block cross-origin WebSockets 
+              might have issues with automatic hot-reloading when embedded.
+            </li>
+          </ul>
         </section>
 
         <section className="about-section">
-          <h2>Privacy</h2>
+          <h2>Privacy & Security</h2>
           <p>
-            PremDevView does not track users, store browsing history on any server, send URLs to
-            third-party services, display advertisements, or use analytics. Local preferences
-            (device, zoom, last URL) are stored only in your browser's localStorage and can be
-            cleared at any time.
+            We take your privacy seriously. PremDevView does not track you, store history on any server,
+            display ads, or use external analytics. The few preferences that are saved (like your current theme)
+            stay strictly within your browser's local storage.
           </p>
         </section>
 

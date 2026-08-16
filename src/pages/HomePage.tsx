@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import { usePreview } from '../hooks/usePreview';
 import { useViewport } from '../hooks/useViewport';
 import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
@@ -10,29 +10,44 @@ export function HomePage() {
   const [previewState, previewActions] = usePreview();
   const [viewportState, viewportActions] = useViewport();
 
-  const [showUrlInput, setShowUrlInput] = useState(false);
 
   // Register keyboard shortcuts
   useKeyboardShortcuts({
     onRotate: viewportActions.toggleOrientation,
   });
 
-  const handleUrlSubmit = (url: string) => {
-    previewActions.loadUrl(url);
-    setShowUrlInput(false);
-  };
 
   return (
     <main className="canvas-layout">
-      
 
-
-      {/* Right Vertical Toolbar */}
-      <div className="floating-toolbar">
+      {/* Top Right Toolbar */}
+      <div className="top-right-toolbar">
+        <div className="url-floating-group">
+          <UrlInput defaultUrl={previewState.url} onSubmit={(url) => previewActions.loadUrl(url)} />
+        </div>
+        
         {/* View Group */}
-        <div className="toolbar-group">
+        <div className="toolbar-group" style={{ alignItems: 'flex-end', marginTop: '8px' }}>
           <button className="toolbar-btn text-btn primary-btn" onClick={viewportActions.toggleOrientation}>
             {viewportState.isLandscape ? 'Change to Portrait' : 'Change to Landscape'}
+          </button>
+        </div>
+
+        {/* Navigation Group */}
+        <div className="toolbar-group" style={{ justifyContent: 'flex-end', marginTop: '8px', flexDirection: 'row', gap: '8px' }}>
+          <button 
+            className="toolbar-btn primary-btn" 
+            onClick={() => window.history.back()}
+            title="Go Back"
+          >
+            {'<'}
+          </button>
+          <button 
+            className="toolbar-btn primary-btn" 
+            onClick={() => window.history.forward()}
+            title="Go Forward"
+          >
+            {'>'}
           </button>
         </div>
       </div>
@@ -49,19 +64,11 @@ export function HomePage() {
           iframeRef={previewActions.iframeRef}
           onIframeLoad={previewActions.onIframeLoad}
           onIframeError={previewActions.onIframeError}
-          onAddressBarClick={() => setShowUrlInput(true)}
+          onAddressBarClick={() => {}}
         />
-        
+
       </section>
 
-      {/* URL Input Popover */}
-      {showUrlInput && (
-        <div className="url-popover-overlay" onClick={() => setShowUrlInput(false)}>
-          <div className="url-popover-content" onClick={(e) => e.stopPropagation()}>
-            <UrlInput defaultUrl={previewState.url} onSubmit={handleUrlSubmit} />
-          </div>
-        </div>
-      )}
 
     </main>
   );

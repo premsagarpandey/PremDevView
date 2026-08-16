@@ -83,7 +83,19 @@ export function usePreview(): [PreviewState, PreviewActions] {
   }, []);
 
   // Derive the iframe src — append reload key to force refresh
-  const iframeSrc = currentUrl ? currentUrl : '';
+  let iframeSrc = currentUrl ? currentUrl : '';
+  
+  // To fulfill the requirement of previewing ANY link (including those that block iframes via X-Frame-Options),
+  // we route external links through a public CORS proxy.
+  if (
+    iframeSrc &&
+    !iframeSrc.includes('localhost') &&
+    !iframeSrc.includes('127.0.0.1') &&
+    !iframeSrc.includes('::1')
+  ) {
+    // Using corsproxy.io to strip X-Frame-Options headers for external sites
+    iframeSrc = `https://corsproxy.io/?${encodeURIComponent(iframeSrc)}`;
+  }
 
   useEffect(() => {
     if (typeof window !== 'undefined' && status === 'idle' && !currentUrl) {

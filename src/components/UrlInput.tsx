@@ -31,8 +31,8 @@ export function UrlInput({ defaultUrl, onSubmit }: UrlInputProps) {
           spellCheck={false}
           aria-label="Enter localhost or website URL"
         />
-        <button type="submit" className="url-input-submit" aria-label="Open Preview">
-          Open Preview
+        <button type="submit" className="url-input-submit" aria-label="Open Mobile Preview">
+          Open Mobile Preview
         </button>
       </div>
     </form>
