@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://premdevview.vercel.app/sitemap.xml
