@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://premdevview.vercel.app/sitemap.xml
+Sitemap: https://prem-dev-view.vercel.app/sitemap.xml
