@@ -74,12 +74,13 @@
   font-family: monospace;
   font-size: 0.9em;
   color: var(--text-primary);
+  border: 1px solid var(--border);
 }
 
 .how-to-use-alert {
-  background: var(--warning-muted);
-  border-left: 4px solid var(--warning);
-  padding: 16px;
+  background: rgba(234, 179, 8, 0.1);
+  border-left: 4px solid #eab308;
+  padding: 16px 20px;
   border-radius: 0 8px 8px 0;
   color: var(--text-primary);
   font-size: var(--font-size-md);
@@ -87,5 +88,84 @@
 }
 
 .how-to-use-alert strong {
-  color: var(--warning);
+  color: #eab308;
+}
+
+.how-to-use-tip {
+  background: rgba(59, 130, 246, 0.08);
+  border-left: 4px solid #3b82f6;
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.how-to-use-tip strong {
+  color: #3b82f6;
+}
+
+.troubleshoot-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.troubleshoot-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.troubleshoot-card:hover {
+  border-color: var(--text-muted);
+}
+
+.troubleshoot-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.troubleshoot-badge {
+  background: #ef4444;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.troubleshoot-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.troubleshoot-body {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.troubleshoot-solution {
+  background: var(--bg-tertiary);
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-top: 6px;
+  border-left: 3px solid #10b981;
+}
+
+.troubleshoot-solution strong {
+  color: #10b981;
 }

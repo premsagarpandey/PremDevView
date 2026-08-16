@@ -16,9 +16,4 @@ export interface ViewportDimensions {
   height: number;
 }
 
-/**
- * Swaps width and height for rotation.
- */
-export function rotateDimensions(dims: ViewportDimensions): ViewportDimensions {
-  return { width: dims.height, height: dims.width };
-}
+

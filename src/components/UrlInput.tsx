@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useState, useEffect, type FormEvent } from 'react';
 import './UrlInput.css';
 
 interface UrlInputProps {
@@ -9,6 +9,12 @@ interface UrlInputProps {
 export function UrlInput({ defaultUrl, onSubmit }: UrlInputProps) {
   const [url, setUrl] = useState(defaultUrl || '');
 
+  useEffect(() => {
+    if (defaultUrl) {
+      setUrl(defaultUrl);
+    }
+  }, [defaultUrl]);
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit(url);
@@ -17,7 +23,7 @@ export function UrlInput({ defaultUrl, onSubmit }: UrlInputProps) {
   return (
     <form className="url-input-form" onSubmit={handleSubmit}>
       <label htmlFor="url-input" className="url-input-label">
-        Preview URL
+        Enter your link here
       </label>
       <div className="url-input-group">
         <input

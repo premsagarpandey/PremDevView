@@ -34,13 +34,6 @@
   border-radius: 12px;
 }
 
-.header-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
-
 .header-nav {
   display: flex;
   flex-direction: column;
@@ -71,18 +64,9 @@
   background: var(--text-primary);
 }
 
-a.header-nav-link {
-  display: inline-flex;
-  align-items: center;
-}
-
 @media (max-width: 480px) {
   .header-inner {
     padding: 0 16px;
-  }
-
-  .header-title {
-    font-size: 16px;
   }
 
   .header-nav-link {

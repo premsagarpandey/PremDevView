@@ -37,15 +37,29 @@ export function HomePage() {
         <div className="toolbar-group" style={{ justifyContent: 'flex-end', marginTop: '8px', flexDirection: 'row', gap: '8px' }}>
           <button 
             className="toolbar-btn primary-btn" 
-            onClick={() => window.history.back()}
+            onClick={() => {
+              try {
+                previewActions.iframeRef.current?.contentWindow?.history.back();
+              } catch {
+                // Cross-origin fallback
+              }
+            }}
             title="Go Back"
+            aria-label="Go Back in Preview"
           >
             {'<'}
           </button>
           <button 
             className="toolbar-btn primary-btn" 
-            onClick={() => window.history.forward()}
+            onClick={() => {
+              try {
+                previewActions.iframeRef.current?.contentWindow?.history.forward();
+              } catch {
+                // Cross-origin fallback
+              }
+            }}
             title="Go Forward"
+            aria-label="Go Forward in Preview"
           >
             {'>'}
           </button>

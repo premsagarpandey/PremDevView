@@ -11,14 +11,20 @@ export function Header({ currentPage, onNavigate, theme, toggleTheme }: HeaderPr
   return (
     <header className="header">
       <div className="header-inner">
-        <button
-          className="header-brand"
-          onClick={() => onNavigate('home')}
-          aria-label="PremDevView Home"
-        >
-          <img src="/logo.png" alt="PremDevView Logo" className="header-logo" />
-          <span className="header-title">PremDevView</span>
-        </button>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <button
+            className="header-brand"
+            onClick={() => onNavigate('home')}
+            aria-label="PremDevView Home"
+            style={{ paddingBottom: 0 }}
+          >
+            <img src="/logo.png" alt="PremDevView Logo" className="header-logo" />
+          </button>
+          <p style={{ fontSize: '19px', color: 'var(--text-primary)', textAlign: 'center', margin: 0, padding: '0 12px', lineHeight: '1.3', fontWeight: 900, letterSpacing: '-0.02em' }}>
+            Preview your localhost or<br />
+            un-deployed website
+          </p>
+        </div>
 
         <nav className="header-nav" aria-label="Main navigation">
           <button
@@ -28,26 +34,23 @@ export function Header({ currentPage, onNavigate, theme, toggleTheme }: HeaderPr
             Preview
           </button>
           <button
+            className={`header-nav-link ${currentPage === 'how-to' ? 'active' : ''}`}
+            onClick={() => onNavigate('how-to')}
+          >
+            How to Use
+          </button>
+          <button
             className={`header-nav-link ${currentPage === 'about' ? 'active' : ''}`}
             onClick={() => onNavigate('about')}
           >
             About
           </button>
           <button
-            className={`header-nav-link ${currentPage === 'how-to' ? 'active' : ''}`}
-            onClick={() => onNavigate('how-to')}
+            className={`header-nav-link ${currentPage === 'about-developer' ? 'active' : ''}`}
+            onClick={() => onNavigate('about-developer')}
           >
-            How to Use
+            About Developer
           </button>
-          <a
-            className="header-nav-link"
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub repository (coming soon)"
-          >
-            GitHub
-          </a>
         </nav>
       </div>
 

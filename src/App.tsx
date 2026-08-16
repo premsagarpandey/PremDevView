@@ -3,9 +3,10 @@ import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { HowToUsePage } from './pages/HowToUsePage';
+import { AboutDeveloperPage } from './pages/AboutDeveloperPage';
 import { useTheme } from './hooks/useTheme';
 
-type Page = 'home' | 'about' | 'how-to';
+type Page = 'home' | 'about' | 'how-to' | 'about-developer';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -28,6 +29,7 @@ function App() {
         {currentPage === 'home' && <HomePage />}
         {currentPage === 'about' && <AboutPage />}
         {currentPage === 'how-to' && <HowToUsePage />}
+        {currentPage === 'about-developer' && <AboutDeveloperPage />}
       </div>
     </div>
   );

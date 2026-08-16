@@ -14,26 +14,10 @@
 }
 
 
-/* ----------------------------------
-   Right Vertical Toolbar
-   ---------------------------------- */
-.floating-toolbar {
-  position: absolute;
-  top: 50%;
-  bottom: auto;
-  right: 24px;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  z-index: 100;
-}
-
 .toolbar-group {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  /* Remove the glassy background from the group so the button pops */
   background: transparent;
   padding: 0;
   border: none;
@@ -63,7 +47,15 @@
 
 /* Invert colors inside the floating group for black/white theme */
 .url-floating-group .url-input-label {
-  display: none; 
+  display: block; 
+  color: var(--bg-primary);
+  opacity: 0.8;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+  text-align: center;
 }
 
 .url-floating-group .url-input-group {
@@ -78,11 +70,11 @@
   background: rgba(128, 128, 128, 0.15); /* subtle inner background */
   color: var(--bg-primary);
   border: 1px solid rgba(128, 128, 128, 0.2);
-  height: 44px;
+  height: 70px !important; /* Increased height even further */
   width: 100%;
-  font-size: 14px;
-  padding: 0 14px;
-  border-radius: 10px;
+  font-size: 16px;
+  padding: 0 16px;
+  border-radius: 4px; /* More rectangular sharp edges */
   margin: 0;
   box-sizing: border-box; /* Fix alignment overflow */
 }
@@ -100,12 +92,13 @@
 .url-floating-group .url-input-submit {
   background: var(--bg-primary);
   color: var(--text-primary);
-  height: 44px; 
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  width: 100%;
-  padding: 0;
+  height: 30px !important; /* Even smaller height */
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  width: auto !important; /* Not full width anymore */
+  padding: 0 16px !important; /* Just enough padding for the text */
+  margin: 0 auto; /* Center the button in the box */
   display: flex;
   align-items: center;
   justify-content: center;

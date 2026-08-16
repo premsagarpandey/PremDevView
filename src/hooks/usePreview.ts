@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
-import { validateUrl } from '../utils/urlValidation';
+import { validateUrl, isLocalOrDevUrl } from '../utils/urlValidation';
 import { useLocalStorage } from './useLocalStorage';
 
 export type PreviewStatus = 'idle' | 'loading' | 'loaded' | 'error';
@@ -45,19 +45,20 @@ export function usePreview(): [PreviewState, PreviewActions] {
       setErrorType(null);
       setErrorMessage('');
 
-      // Set a timeout to detect if the iframe fails to load
+      // Set a timeout to detect if the iframe fails to load or is taking too long
       if (loadTimeoutRef.current) {
         clearTimeout(loadTimeoutRef.current);
       }
       loadTimeoutRef.current = setTimeout(() => {
-        // If still loading after 15s, might be unreachable
+        // Force the iframe to become visible after 3 seconds.
+        // If the local server isn't running, this allows the user to see the browser's native 'Connection Refused' error.
         setStatus((prev) => {
           if (prev === 'loading') {
-            return 'loading'; // Keep loading — iframe might still load
+            return 'loaded'; 
           }
           return prev;
         });
-      }, 15000);
+      }, 3000);
     },
     [setSavedUrl]
   );
@@ -87,12 +88,9 @@ export function usePreview(): [PreviewState, PreviewActions] {
   
   // To fulfill the requirement of previewing ANY link (including those that block iframes via X-Frame-Options),
   // we route external links through a public CORS proxy.
-  if (
-    iframeSrc &&
-    !iframeSrc.includes('localhost') &&
-    !iframeSrc.includes('127.0.0.1') &&
-    !iframeSrc.includes('::1')
-  ) {
+  // HOWEVER, we MUST NOT proxy local/dev environments (like 192.168.x.x or custom dev ports) 
+  // because public proxies cannot access private networks.
+  if (iframeSrc && !isLocalOrDevUrl(iframeSrc)) {
     // Using corsproxy.io to strip X-Frame-Options headers for external sites
     iframeSrc = `https://corsproxy.io/?${encodeURIComponent(iframeSrc)}`;
   }
