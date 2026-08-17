@@ -60,21 +60,9 @@ export function PhoneScreen({
       className="phone-screen"
     >
       {status === 'idle' && (
-        <div 
-          className="phone-screen-scaled-wrapper"
-          style={{
-            width: `${width}px`,
-            height: `${height}px`,
-            transform: `scale(${scale})`,
-            transformOrigin: 'top left',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          <StatusBar displayUrl="Please enter link" onClick={onAddressBarClick} />
-          <div className="phone-screen-empty-container" style={{ flex: 1, overflow: 'hidden', display: 'flex' }}>
-            <EmptyState onFocusInput={onAddressBarClick} />
-          </div>
+        <div className="phone-screen-idle-layout">
+          <StatusBar displayUrl="Enter your localhost link" onClick={onAddressBarClick} />
+          <EmptyState onFocusInput={onAddressBarClick} />
         </div>
       )}
 
@@ -113,10 +101,6 @@ export function PhoneScreen({
               onError={onError}
               sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-popups-to-escape-sandbox"
               allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone"
-              style={{
-                width: `${width + 18}px`,
-                height: `100%`,
-              }}
             />
           </div>
         </div>

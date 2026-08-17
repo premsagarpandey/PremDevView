@@ -4,174 +4,37 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 24px 20px;
+  width: 100%;
+  padding: 32px 24px;
   text-align: center;
-  background: linear-gradient(180deg, #0b0c16 0%, #07080e 100%);
-  overflow-y: auto;
+  background: #000000;
   box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
 }
 
-.empty-state-card {
+.empty-state-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 320px;
-  width: 100%;
-  padding: 24px 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  backdrop-filter: blur(16px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-.empty-state-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  background: rgba(56, 189, 248, 0.1);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  border-radius: 9999px;
-  font-size: 11px;
-  font-weight: 700;
-  color: #38bdf8;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.empty-state-dot {
-  width: 6px;
-  height: 6px;
-  background: #38bdf8;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #38bdf8;
-  animation: pulseDot 2s ease-in-out infinite;
-}
-
-.empty-state-icon-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  max-width: 280px;
 }
 
-.empty-state-icon {
-  width: 96px;
-  height: 96px;
-  object-fit: contain;
-  position: relative;
-  z-index: 2;
-  animation: floatPulse 3.5s ease-in-out infinite;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
-}
-
-.empty-state-icon-glow {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(56, 189, 248, 0.15) 50%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(12px);
-  z-index: 1;
-  animation: floatPulse 3.5s ease-in-out infinite;
-}
-
-.empty-state-title {
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.35;
-  color: #ffffff;
-  margin: 0 0 10px 0;
-  letter-spacing: -0.01em;
-}
-
-.empty-state-text {
-  font-size: 12.5px;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.55;
-  margin: 0 0 16px 0;
-}
-
-.empty-state-text code {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 1px 5px;
-  border-radius: 4px;
-  color: #93c5fd;
-  font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 11.5px;
-}
-
-.empty-state-text strong {
-  color: #f1f5f9;
-}
-
-.empty-state-examples {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 18px;
-}
-
-.empty-example-tag {
-  font-size: 11px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 3px 8px;
-  border-radius: 6px;
-}
-
-.empty-state-action-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  width: 100%;
-  padding: 10px 16px;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  color: #ffffff;
-  font-size: 13px;
+.empty-state-message {
+  font-size: 19px;
   font-weight: 600;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transition: all 0.2s ease;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-align: center;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.empty-state-action-btn:hover {
-  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+.empty-state:hover .empty-state-message {
+  color: #ffffff;
+  transform: scale(1.02);
 }
 
-.empty-state-action-btn:active {
-  transform: translateY(0);
-}
-
-@keyframes floatPulse {
-  0%, 100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-4px) scale(1.03);
-  }
-}
-
-@keyframes pulseDot {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.4;
-    transform: scale(0.85);
-  }
-}
 
