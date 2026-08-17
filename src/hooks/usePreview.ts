@@ -95,15 +95,9 @@ export function usePreview(): [PreviewState, PreviewActions] {
     iframeSrc = `https://corsproxy.io/?${encodeURIComponent(iframeSrc)}`;
   }
 
-  useEffect(() => {
-    if (typeof window !== 'undefined' && status === 'idle' && !currentUrl) {
-      if (savedUrl) {
-        loadUrl(savedUrl);
-      } else {
-        loadUrl(window.location.origin);
-      }
-    }
-  }, [savedUrl, currentUrl, status, loadUrl]);
+  // Note: We do not auto-load URLs on initial visit so that new users
+  // see the helpful EmptyState ("Please enter your localhost link in the link tab")
+  // and the input placeholder ("Please enter link").
 
   return [
     {

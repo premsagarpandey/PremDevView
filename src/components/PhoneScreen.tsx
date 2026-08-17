@@ -59,7 +59,24 @@ export function PhoneScreen({
       ref={containerRef}
       className="phone-screen"
     >
-      {status === 'idle' && <EmptyState />}
+      {status === 'idle' && (
+        <div 
+          className="phone-screen-scaled-wrapper"
+          style={{
+            width: `${width}px`,
+            height: `${height}px`,
+            transform: `scale(${scale})`,
+            transformOrigin: 'top left',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <StatusBar displayUrl="Please enter link" onClick={onAddressBarClick} />
+          <div className="phone-screen-empty-container" style={{ flex: 1, overflow: 'hidden', display: 'flex' }}>
+            <EmptyState onFocusInput={onAddressBarClick} />
+          </div>
+        </div>
+      )}
 
       {status === 'error' && errorType && (
         <ErrorState type={errorType} message={errorMessage} />

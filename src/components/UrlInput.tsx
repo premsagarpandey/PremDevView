@@ -10,9 +10,7 @@ export function UrlInput({ defaultUrl, onSubmit }: UrlInputProps) {
   const [url, setUrl] = useState(defaultUrl || '');
 
   useEffect(() => {
-    if (defaultUrl) {
-      setUrl(defaultUrl);
-    }
+    setUrl(defaultUrl || '');
   }, [defaultUrl]);
 
   const handleSubmit = (e: FormEvent) => {
@@ -32,7 +30,7 @@ export function UrlInput({ defaultUrl, onSubmit }: UrlInputProps) {
           className="url-input-field"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          placeholder="http://localhost:5173"
+          placeholder="Please enter link"
           autoComplete="url"
           spellCheck={false}
           aria-label="Enter localhost or website URL"

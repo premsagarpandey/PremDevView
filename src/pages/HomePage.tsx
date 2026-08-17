@@ -17,6 +17,14 @@ export function HomePage() {
   });
 
 
+  const handleFocusInput = () => {
+    const inputEl = document.getElementById('url-input') as HTMLInputElement | null;
+    if (inputEl) {
+      inputEl.focus();
+      inputEl.select();
+    }
+  };
+
   return (
     <main className="canvas-layout">
 
@@ -78,7 +86,7 @@ export function HomePage() {
           iframeRef={previewActions.iframeRef}
           onIframeLoad={previewActions.onIframeLoad}
           onIframeError={previewActions.onIframeError}
-          onAddressBarClick={() => {}}
+          onAddressBarClick={handleFocusInput}
         />
 
       </section>
