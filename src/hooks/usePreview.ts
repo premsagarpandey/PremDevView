@@ -1,6 +1,5 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { validateUrl, isLocalOrDevUrl } from '../utils/urlValidation';
-import { useLocalStorage } from './useLocalStorage';
 
 export type PreviewStatus = 'idle' | 'loading' | 'loaded' | 'error';
 export type ErrorType = 'invalid-url' | 'connection' | 'iframe-blocked' | 'unknown';
@@ -21,7 +20,6 @@ export interface PreviewActions {
 }
 
 export function usePreview(): [PreviewState, PreviewActions] {
-  const [savedUrl, setSavedUrl] = useLocalStorage('lastUrl', '');
   const [currentUrl, setCurrentUrl] = useState('');
   const [status, setStatus] = useState<PreviewStatus>('idle');
   const [errorType, setErrorType] = useState<ErrorType | null>(null);
@@ -40,7 +38,6 @@ export function usePreview(): [PreviewState, PreviewActions] {
       }
 
       setCurrentUrl(result.url);
-      setSavedUrl(result.url);
       setStatus('loading');
       setErrorType(null);
       setErrorMessage('');
@@ -60,7 +57,7 @@ export function usePreview(): [PreviewState, PreviewActions] {
         });
       }, 3000);
     },
-    [setSavedUrl]
+    []
   );
 
 
@@ -95,13 +92,12 @@ export function usePreview(): [PreviewState, PreviewActions] {
     iframeSrc = `https://corsproxy.io/?${encodeURIComponent(iframeSrc)}`;
   }
 
-  // Note: We do not auto-load URLs on initial visit so that new users
-  // see the helpful EmptyState ("Please enter your localhost link in the link tab")
-  // and the input placeholder ("Please enter link").
+  // Note: On initial load and every browser refresh, we start completely fresh:
+  // url is '', status is 'idle', phone screen shows EmptyState, input shows placeholder.
 
   return [
     {
-      url: savedUrl,
+      url: currentUrl,
       currentUrl: iframeSrc,
       status,
       errorType,

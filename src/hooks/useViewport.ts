@@ -4,7 +4,6 @@ import {
   type DevicePreset,
   type ViewportDimensions,
 } from '../utils/viewport';
-import { useLocalStorage } from './useLocalStorage';
 
 export interface ViewportState {
   preset: DevicePreset;
@@ -17,20 +16,15 @@ export interface ViewportActions {
 }
 
 export function useViewport(): [ViewportState, ViewportActions] {
-  const [savedOrientation, setSavedOrientation] = useLocalStorage('landscape', false);
-  const [isLandscape, setIsLandscape] = useState(savedOrientation);
+  const [isLandscape, setIsLandscape] = useState(false);
 
   const dimensions: ViewportDimensions = isLandscape 
     ? { width: DEFAULT_PRESET.height, height: DEFAULT_PRESET.width }
     : { width: DEFAULT_PRESET.width, height: DEFAULT_PRESET.height };
 
   const toggleOrientation = useCallback(() => {
-    setIsLandscape((prev) => {
-      const next = !prev;
-      setSavedOrientation(next);
-      return next;
-    });
-  }, [setSavedOrientation]);
+    setIsLandscape((prev) => !prev);
+  }, []);
 
   return [
     { preset: DEFAULT_PRESET, dimensions, isLandscape },
