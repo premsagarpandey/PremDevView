@@ -169,3 +169,30 @@
 .troubleshoot-solution strong {
   color: #10b981;
 }
+
+@media (max-width: 768px) {
+  .how-to-use {
+    height: auto !important;
+    padding: 24px 16px 48px 16px;
+  }
+
+  .how-to-use-inner {
+    gap: 32px;
+  }
+
+  .how-to-use-title {
+    font-size: 24px;
+  }
+
+  .how-to-use-section h2 {
+    font-size: 18px;
+  }
+
+  .how-to-use-section p, .how-to-use-section li {
+    font-size: 14px;
+  }
+
+  .troubleshoot-card {
+    padding: 16px;
+  }
+}

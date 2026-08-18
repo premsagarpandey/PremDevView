@@ -79,13 +79,23 @@
   color: var(--text-tertiary);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .about {
-    padding: var(--space-xl) var(--space-lg);
+    height: auto !important;
+    padding: 24px 16px 48px 16px;
   }
 
   .about-title {
-    font-size: var(--font-size-xl);
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .about-section h2 {
+    font-size: 18px;
+  }
+
+  .about-section p, .about-section li {
+    font-size: 14px;
   }
 }
 

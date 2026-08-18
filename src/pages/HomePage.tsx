@@ -27,50 +27,61 @@ export function HomePage() {
 
   return (
     <main className="canvas-layout">
+      {/* Mobile Intro Banner (Visible only on mobile/Android devices) */}
+      <div className="mobile-intro-banner">
+        <span className="mobile-intro-badge">📱 Virtual Phone Simulator</span>
+        <h1 className="mobile-intro-heading">Preview Localhost & Web Apps</h1>
+        <p className="mobile-intro-desc">
+          Test un-deployed web projects inside an authentic virtual smartphone screen.
+        </p>
+      </div>
 
-      {/* Top Right Toolbar */}
+      {/* Toolbar / URL Input */}
       <div className="top-right-toolbar">
         <div className="url-floating-group">
           <UrlInput defaultUrl={previewState.url} onSubmit={(url) => previewActions.loadUrl(url)} />
         </div>
         
-        {/* View Group */}
-        <div className="toolbar-group" style={{ alignItems: 'flex-end', marginTop: '8px' }}>
-          <button className="toolbar-btn text-btn primary-btn" onClick={viewportActions.toggleOrientation}>
-            {viewportState.isLandscape ? 'Change to Portrait' : 'Change to Landscape'}
-          </button>
-        </div>
+        {/* Controls Row on Mobile / Floating Column on Desktop */}
+        <div className="mobile-controls-row">
+          {/* View Group */}
+          <div className="toolbar-group orientation-group" style={{ alignItems: 'flex-end', marginTop: '8px' }}>
+            <button className="toolbar-btn text-btn primary-btn" onClick={viewportActions.toggleOrientation}>
+              {viewportState.isLandscape ? 'Change to Portrait' : 'Change to Landscape'}
+            </button>
+          </div>
 
-        {/* Navigation Group */}
-        <div className="toolbar-group" style={{ justifyContent: 'flex-end', marginTop: '8px', flexDirection: 'row', gap: '8px' }}>
-          <button 
-            className="toolbar-btn primary-btn" 
-            onClick={() => {
-              try {
-                previewActions.iframeRef.current?.contentWindow?.history.back();
-              } catch {
-                // Cross-origin fallback
-              }
-            }}
-            title="Go Back"
-            aria-label="Go Back in Preview"
-          >
-            {'<'}
-          </button>
-          <button 
-            className="toolbar-btn primary-btn" 
-            onClick={() => {
-              try {
-                previewActions.iframeRef.current?.contentWindow?.history.forward();
-              } catch {
-                // Cross-origin fallback
-              }
-            }}
-            title="Go Forward"
-            aria-label="Go Forward in Preview"
-          >
-            {'>'}
-          </button>
+          {/* Navigation Group */}
+          <div className="toolbar-group nav-arrows-group" style={{ justifyContent: 'flex-end', marginTop: '8px', flexDirection: 'row', gap: '8px' }}>
+            <button 
+              className="toolbar-btn primary-btn" 
+              onClick={() => {
+                try {
+                  previewActions.iframeRef.current?.contentWindow?.history.back();
+                } catch {
+                  // Cross-origin fallback
+                }
+              }}
+              title="Go Back"
+              aria-label="Go Back in Preview"
+            >
+              {'<'}
+            </button>
+            <button 
+              className="toolbar-btn primary-btn" 
+              onClick={() => {
+                try {
+                  previewActions.iframeRef.current?.contentWindow?.history.forward();
+                } catch {
+                  // Cross-origin fallback
+                }
+              }}
+              title="Go Forward"
+              aria-label="Go Forward in Preview"
+            >
+              {'>'}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -88,10 +99,18 @@ export function HomePage() {
           onIframeError={previewActions.onIframeError}
           onAddressBarClick={handleFocusInput}
         />
-
       </section>
 
-
+      {/* Mobile Pro Tip Card */}
+      <div className="mobile-desktop-notice">
+        <div className="notice-icon">💡</div>
+        <div className="notice-content">
+          <h4>Best Experienced on Desktop</h4>
+          <p>
+            Open <strong>PremDevView</strong> on your laptop/PC browser to test your local development servers (<code>localhost:3000</code>, <code>localhost:5173</code>, etc.) live while coding!
+          </p>
+        </div>
+      </div>
     </main>
   );
 }

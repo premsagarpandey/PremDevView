@@ -129,9 +129,18 @@
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .about-dev-page {
-    padding: var(--space-xl) var(--space-lg);
+    height: auto !important;
+    padding: 24px 16px 48px 16px;
+  }
+
+  .about-dev-page-title {
+    font-size: 24px;
+  }
+
+  .about-dev-name {
+    font-size: 22px;
   }
 
   .about-dev-card {
@@ -139,8 +148,10 @@
   }
 
   .about-pill-btn {
-    padding: 12px 18px;
-    font-size: 14px;
+    padding: 12px 16px;
+    font-size: 13.5px;
     gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
