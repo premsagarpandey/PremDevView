@@ -4,6 +4,7 @@
 
 [![Live Website](https://img.shields.io/badge/Website-premdevview.vercel.app-blue?style=for-the-badge&logo=vercel)](https://premdevview.vercel.app/)
 [![Created by](https://img.shields.io/badge/Developer-Prem%20Sagar%20Pandey-orange?style=for-the-badge)](https://github.com/premsagarpandey)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](./LICENSE)
 
 ---
 
@@ -34,6 +35,12 @@ Visit and use the tool for free: **[https://premdevview.vercel.app/](https://pre
 - 🐙 **GitHub:** [@premsagarpandey](https://github.com/premsagarpandey)
 - 📸 **Instagram:** [@premsagar__1](https://www.instagram.com/premsagar__1/)
 - ✉️ **Email:** `premsagarpandey.cs@gmail.com`
+
+---
+
+## 📜 License
+This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE) file for full details.  
+Copyright (c) 2026 **Prem Sagar Pandey**.
 
 ---
 
