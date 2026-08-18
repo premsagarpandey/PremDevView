@@ -20,6 +20,34 @@ interface PhoneScreenProps {
   onAddressBarClick?: () => void;
 }
 
+// Get the native scrollbar width to hide it properly in the iframe
+let cachedScrollbarWidth: number | null = null;
+function getNativeScrollbarWidth(): number {
+  if (cachedScrollbarWidth !== null) return cachedScrollbarWidth;
+  
+  const iframe = document.createElement('iframe');
+  iframe.style.cssText = 'position: absolute; top: -9999px; width: 100px; height: 100px; visibility: hidden; border: none;';
+  document.body.appendChild(iframe);
+  
+  let width = 0;
+  try {
+    const doc = iframe.contentWindow?.document;
+    if (doc) {
+      doc.open();
+      doc.write('<!DOCTYPE html><html><head><style>body { margin: 0; padding: 0; overflow-y: scroll; }</style></head><body></body></html>');
+      doc.close();
+      width = 100 - doc.documentElement.clientWidth;
+    }
+  } catch (e) {
+    width = 17; // Fallback to Windows default
+  } finally {
+    document.body.removeChild(iframe);
+  }
+  
+  cachedScrollbarWidth = width;
+  return width;
+}
+
 export function PhoneScreen({
   status,
   currentUrl,
@@ -37,6 +65,11 @@ export function PhoneScreen({
   
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
+  const [scrollbarWidth, setScrollbarWidth] = useState(0);
+
+  useEffect(() => {
+    setScrollbarWidth(getNativeScrollbarWidth());
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -91,10 +124,15 @@ export function PhoneScreen({
         >
           <StatusBar displayUrl={displayUrl} onClick={onAddressBarClick} />
           
-          <div className="phone-screen-iframe-container" style={{ flex: 1, overflow: 'hidden' }}>
+          <div className="phone-screen-iframe-container" style={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
             <iframe
               ref={iframeRef}
               className="phone-screen-iframe"
+              style={{ 
+                width: `calc(100% + ${scrollbarWidth}px)`,
+                paddingRight: scrollbarWidth > 0 ? `${scrollbarWidth}px` : '0px',
+                boxSizing: 'content-box'
+              }}
               src={currentUrl}
               title="Website Preview"
               onLoad={onLoad}
