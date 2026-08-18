@@ -42,16 +42,23 @@
 
 .header-nav-link {
   background: none;
-  border: none;
+  border: 1px solid transparent;
   color: var(--text-secondary);
   font-size: 14px;
   font-weight: 500;
   padding: 8px 14px;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: color 0.2s, background 0.2s;
+  transition: all 0.2s ease;
   text-decoration: none;
   font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .header-nav-link:hover {
@@ -62,6 +69,47 @@
 .header-nav-link.active {
   color: var(--bg-primary);
   background: var(--text-primary);
+  font-weight: 600;
+}
+
+.header-footer {
+  padding: 16px;
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-toggle-btn {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-weight: 500;
+  padding: 10px 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(0);
+}
+
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.theme-toggle-btn:hover .theme-toggle-icon {
+  transform: rotate(15deg) scale(1.1);
 }
 
 @media (max-width: 480px) {
@@ -72,5 +120,9 @@
   .header-nav-link {
     padding: 6px 10px;
     font-size: 13px;
+  }
+
+  .header-footer {
+    padding: 12px 16px;
   }
 }
