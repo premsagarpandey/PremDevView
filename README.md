@@ -1,8 +1,8 @@
-# PremDevView 📱
+﻿# PremDevView 📱
 > **PREVIEW. TEST. GO MOBILE.**  
 > Preview your localHost & un-deployed web projects in a realistic virtual smartphone environment.
 
-[![Live Website](https://img.shields.io/badge/Website-premdevview.vercel.app-blue?style=for-the-badge&logo=vercel)](https://premdevview.vercel.app/)
+[![Live Website](https://img.shields.io/badge/Website-prem-dev-view.vercel.app-blue?style=for-the-badge&logo=vercel)](https://prem-dev-view.vercel.app/)
 [![Created by](https://img.shields.io/badge/Developer-Prem%20Sagar%20Pandey-orange?style=for-the-badge)](https://github.com/premsagarpandey)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](./LICENSE)
 
@@ -25,7 +25,7 @@ Say goodbye to the clunky Chrome DevTools device mode — just enter your localh
 ---
 
 ## 🚀 Live Demo
-Visit and use the tool for free: **[https://premdevview.vercel.app/](https://premdevview.vercel.app/)**
+Visit and use the tool for free: **[https://prem-dev-view.vercel.app/](https://prem-dev-view.vercel.app/)**
 
 ---
 
