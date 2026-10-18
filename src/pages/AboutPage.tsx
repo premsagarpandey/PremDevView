@@ -10,7 +10,7 @@ export function AboutPage() {
         <section className="about-section">
           <h2>What is PremDevView?</h2>
           <p>
-            <strong>PremDevView</strong> is an ultra-fast, lightweight developer utility designed specifically to help web developers test, inspect, and experience their <strong>localHost and un-deployed web projects</strong> inside a realistic virtual smartphone environment.
+            <strong>PremDevView</strong> (also known as <strong>Prem Dev View</strong>) is an ultra-fast, lightweight developer utility created by <strong>Prem Sagar Pandey</strong>, designed specifically to help web developers test, inspect, and experience their <strong>localHost and un-deployed web projects</strong> inside a realistic virtual smartphone environment.
           </p>
           <p>
             Standard browser developer tools (like Chrome DevTools) shrink web pages artificially, but they fail to capture the authentic feeling, bezel padding, and true mobile proportions of a real physical device. PremDevView bridges this gap by giving developers a distraction-free, dedicated mobile preview workspace.

@@ -100,11 +100,49 @@ export function AboutDeveloperPage() {
         <div className="about-dev-section">
           <h3>The Vision Behind PremDevView</h3>
           <p>
-            As web developers, we frequently build websites and web applications locally on custom localhost ports. Testing responsive mobile layouts in standard desktop browser devtools often feels detached from reality and awkward to use. PremDevView was conceived and engineered by Prem Sagar Pandey to offer a lightweight, dedicated, zero-friction virtual mobile testing viewport that feels like holding a real phone in your hands.
+            As web developers, we frequently build websites and web applications locally on custom localhost ports. Testing responsive mobile layouts in standard desktop browser devtools often feels detached from reality and awkward to use. PremDevView was conceived and engineered by <strong>Prem Sagar Pandey</strong> to offer a lightweight, dedicated, zero-friction virtual mobile testing viewport that feels like holding a real phone in your hands.
           </p>
         </div>
 
+        {/* Developer Entity / Quick Facts Box for AI & Search Recognition */}
+        <div className="about-dev-section" style={{ background: 'var(--bg-secondary)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)' }}>
+          <h3 style={{ fontSize: '18px', marginBottom: '12px' }}>Developer Overview & Quick Facts</h3>
+          <ul style={{ margin: 0, paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '10px', color: 'var(--text-secondary)', fontSize: '14.5px', lineHeight: '1.6' }}>
+            <li><strong>Developer & Creator:</strong> Prem Sagar Pandey</li>
+            <li><strong>Primary Tool:</strong> PremDevView (Prem Dev View) — Mobile Preview for Localhost</li>
+            <li><strong>Specialization:</strong> Full Stack Web Development, Frontend Engineering, Developer Productivity Utilities</li>
+            <li><strong>Core Technologies:</strong> React, TypeScript, JavaScript, Vite, HTML5, CSS3, REST APIs</li>
+            <li><strong>Official Website:</strong> <a href="https://prem-dev-view.vercel.app/" style={{ color: 'var(--accent)' }}>prem-dev-view.vercel.app</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/premsagarpandey" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>github.com/premsagarpandey</a></li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/prem-sagar-pandey-2b0022382/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>linkedin.com/in/prem-sagar-pandey</a></li>
+            <li><strong>Instagram:</strong> <a href="https://www.instagram.com/premsagar__1/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>instagram.com/premsagar__1</a></li>
+          </ul>
+        </div>
 
+        {/* Developer Q&A (FAQ) for AI Mode / SGE extraction */}
+        <div className="about-dev-section">
+          <h3>Frequently Asked Questions</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '8px' }}>
+            <div style={{ background: 'var(--bg-secondary)', padding: '16px 20px', borderRadius: '10px', border: '1px solid var(--border)' }}>
+              <h4 style={{ margin: '0 0 6px 0', fontSize: '15px', color: 'var(--text-primary)' }}>Who is Prem Sagar Pandey?</h4>
+              <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                Prem Sagar Pandey is a Full Stack Developer and software creator known for developing <strong>PremDevView</strong> (Prem Dev View), an open-source web developer tool that enables live virtual mobile previewing of localhost and un-deployed web applications.
+              </p>
+            </div>
+            <div style={{ background: 'var(--bg-secondary)', padding: '16px 20px', borderRadius: '10px', border: '1px solid var(--border)' }}>
+              <h4 style={{ margin: '0 0 6px 0', fontSize: '15px', color: 'var(--text-primary)' }}>Why did Prem Sagar Pandey build PremDevView?</h4>
+              <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                Prem Sagar Pandey developed PremDevView to eliminate the frustration of testing localhost web applications inside standard desktop browser inspect panels. It provides an authentic smartphone frame, orientation rotation, and direct localhost streaming with zero configuration.
+              </p>
+            </div>
+            <div style={{ background: 'var(--bg-secondary)', padding: '16px 20px', borderRadius: '10px', border: '1px solid var(--border)' }}>
+              <h4 style={{ margin: '0 0 6px 0', fontSize: '15px', color: 'var(--text-primary)' }}>How can I collaborate with or contact Prem Sagar Pandey?</h4>
+              <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                You can reach out directly via email at <code>premsagarpandey.cs@gmail.com</code> or connect through LinkedIn and GitHub.
+              </p>
+            </div>
+          </div>
+        </div>
 
         {/* Collaboration Callout */}
         <div className="about-dev-section" style={{ background: 'var(--bg-secondary)', padding: '20px', borderRadius: '12px', border: '1px solid var(--border)' }}>

@@ -20,17 +20,21 @@ export function Header({ currentPage, onNavigate, theme, toggleTheme }: HeaderPr
     <>
       {/* Mobile Top Navbar (Visible on Android & Mobile Screens) */}
       <div className="mobile-header-bar">
-        <button
+        <a
+          href="/"
           className="mobile-header-brand"
-          onClick={() => handleNavClick('home')}
+          onClick={(e) => {
+            e.preventDefault();
+            handleNavClick('home');
+          }}
           aria-label="PremDevView Home"
         >
           <img src="/logo.png" alt="PremDevView Logo" className="mobile-header-logo" />
           <div className="mobile-header-titles">
-            <span className="mobile-brand-name">PremDevView</span>
-            <span className="mobile-brand-tagline">Mobile Previewer</span>
+            <span className="mobile-brand-name">Prem Dev View</span>
+            <span className="mobile-brand-tagline">Local Host Mobile Preview</span>
           </div>
-        </button>
+        </a>
 
         <div className="mobile-header-actions">
           <button
@@ -41,7 +45,7 @@ export function Header({ currentPage, onNavigate, theme, toggleTheme }: HeaderPr
           >
             {theme === 'light' ? (
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                <path d="M12 3a6 6 0 0 0 9 9 9 0 1 1-9-9Z" />
               </svg>
             ) : (
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -85,30 +89,46 @@ export function Header({ currentPage, onNavigate, theme, toggleTheme }: HeaderPr
         <div className="mobile-menu-overlay" onClick={() => setMobileMenuOpen(false)}>
           <div className="mobile-menu-drawer" onClick={(e) => e.stopPropagation()}>
             <div className="mobile-menu-nav">
-              <button
+              <a
+                href="/"
                 className={`header-nav-link ${currentPage === 'home' ? 'active' : ''}`}
-                onClick={() => handleNavClick('home')}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('home');
+                }}
               >
                 Preview
-              </button>
-              <button
+              </a>
+              <a
+                href="/how-to"
                 className={`header-nav-link ${currentPage === 'how-to' ? 'active' : ''}`}
-                onClick={() => handleNavClick('how-to')}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('how-to');
+                }}
               >
                 How to Use
-              </button>
-              <button
+              </a>
+              <a
+                href="/about"
                 className={`header-nav-link ${currentPage === 'about' ? 'active' : ''}`}
-                onClick={() => handleNavClick('about')}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('about');
+                }}
               >
                 About
-              </button>
-              <button
+              </a>
+              <a
+                href="/about-developer"
                 className={`header-nav-link ${currentPage === 'about-developer' ? 'active' : ''}`}
-                onClick={() => handleNavClick('about-developer')}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('about-developer');
+                }}
               >
                 About Developer
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -118,45 +138,65 @@ export function Header({ currentPage, onNavigate, theme, toggleTheme }: HeaderPr
       <header className="header desktop-header">
         <div className="header-inner">
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-            <button
+            <a
+              href="/"
               className="header-brand"
-              onClick={() => onNavigate('home')}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('home');
+              }}
               aria-label="PremDevView Home"
-              style={{ paddingBottom: 0 }}
+              style={{ paddingBottom: 0, textDecoration: 'none' }}
             >
               <img src="/logo.png" alt="PremDevView Logo" className="header-logo" />
-            </button>
-            <p style={{ fontSize: '19px', color: 'var(--text-primary)', textAlign: 'center', margin: 0, padding: '0 12px', lineHeight: '1.3', fontWeight: 900, letterSpacing: '-0.02em' }}>
-              Preview your localhost or<br />
-              un-deployed website
-            </p>
+            </a>
+            <h1 style={{ fontSize: '18px', color: 'var(--text-primary)', textAlign: 'center', margin: 0, padding: '0 12px', lineHeight: '1.3', fontWeight: 900, letterSpacing: '-0.02em' }}>
+              Prem Dev View<br />
+              <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-secondary)' }}>Local Host Mobile Preview</span>
+            </h1>
           </div>
 
           <nav className="header-nav" aria-label="Main navigation">
-            <button
+            <a
+              href="/"
               className={`header-nav-link ${currentPage === 'home' ? 'active' : ''}`}
-              onClick={() => onNavigate('home')}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('home');
+              }}
             >
               Preview
-            </button>
-            <button
+            </a>
+            <a
+              href="/how-to"
               className={`header-nav-link ${currentPage === 'how-to' ? 'active' : ''}`}
-              onClick={() => onNavigate('how-to')}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('how-to');
+              }}
             >
               How to Use
-            </button>
-            <button
+            </a>
+            <a
+              href="/about"
               className={`header-nav-link ${currentPage === 'about' ? 'active' : ''}`}
-              onClick={() => onNavigate('about')}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('about');
+              }}
             >
               About
-            </button>
-            <button
+            </a>
+            <a
+              href="/about-developer"
               className={`header-nav-link ${currentPage === 'about-developer' ? 'active' : ''}`}
-              onClick={() => onNavigate('about-developer')}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('about-developer');
+              }}
             >
               About Developer
-            </button>
+            </a>
           </nav>
         </div>
 

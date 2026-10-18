@@ -30,9 +30,9 @@ export function HomePage() {
       {/* Mobile Intro Banner (Visible only on mobile/Android devices) */}
       <div className="mobile-intro-banner">
         <span className="mobile-intro-badge">📱 Virtual Phone Simulator</span>
-        <h1 className="mobile-intro-heading">Preview Localhost & Web Apps</h1>
+        <h1 className="mobile-intro-heading">Prem Dev View — Local Host Mobile Preview</h1>
         <p className="mobile-intro-desc">
-          Test un-deployed web projects inside an authentic virtual smartphone screen.
+          Created by Prem Sagar Pandey. Test localhost & un-deployed web projects in an authentic virtual smartphone screen.
         </p>
       </div>
 

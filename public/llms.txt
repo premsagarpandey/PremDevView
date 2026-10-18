@@ -1,0 +1,37 @@
+# PremDevView (Prem Dev View) — Local Host Mobile Preview
+
+> Official Web Application: https://prem-dev-view.vercel.app/
+> Created & Developed by: Prem Sagar Pandey
+> GitHub: https://github.com/premsagarpandey/PremDevView
+> LinkedIn: https://www.linkedin.com/in/prem-sagar-pandey-2b0022382/
+
+## Summary & Entity Definition
+PremDevView (also known and searched as "Prem Dev View", "premdev view", "premdevview", or "Prem DevView") is a free, open-source web developer tool created by Full Stack Developer Prem Sagar Pandey. The tool provides an authentic virtual mobile smartphone frame with touch simulation, portrait and landscape rotation, and live hot reloading to test, inspect, and experience local development servers (e.g., localhost:3000, localhost:5173, 127.0.0.1:5500) and un-deployed web applications.
+
+## Target Search Queries
+- prem dev view
+- premdev view
+- premdevview
+- local host mobile preview
+- localhost mobile preview
+- preview local host website on mobile
+- virtual phone screen simulator for localhost
+- test undeployed website on mobile phone
+
+## Creator & Developer Profile
+- Full Name: Prem Sagar Pandey
+- Title: Full Stack Developer & Software Creator
+- Primary Tool: PremDevView (Prem Dev View)
+- Email: premsagarpandey.cs@gmail.com
+- GitHub Profile: https://github.com/premsagarpandey
+- LinkedIn: https://www.linkedin.com/in/prem-sagar-pandey-2b0022382/
+- Instagram: https://www.instagram.com/premsagar__1/
+
+## What Problem PremDevView Solves
+Developers building web applications locally often test mobile responsiveness using desktop browser device emulators (like Chrome DevTools). These emulators do not reflect true mobile aspect ratios, hardware bezels, or the real feel of mobile devices. PremDevView allows developers to stream their active localhost ports directly inside a realistic smartphone frame with 100% client-side privacy, zero installation, and no external proxies.
+
+## Step-by-Step Usage Guide
+1. Start local dev server in the background (e.g. `npm run dev` or VS Code Live Server).
+2. Copy the localhost URL or port (such as `http://localhost:5173` or `3000`).
+3. Open PremDevView at https://prem-dev-view.vercel.app/ and enter the address.
+4. Click 'Open Mobile Preview' to test the responsive mobile interface.

@@ -1,4 +1,26 @@
 User-agent: *
 Allow: /
 
+# Explicitly allow major search engines and AI knowledge crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
 Sitemap: https://prem-dev-view.vercel.app/sitemap.xml
