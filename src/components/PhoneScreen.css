@@ -15,17 +15,43 @@
   background: #000000;
 }
 
+.phone-screen-scaled-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.25s ease-out;
+}
+
+.phone-screen-iframe-container {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+}
+
 .phone-screen-iframe {
   display: block;
   border: none;
   background: #ffffff;
   width: 100%;
   height: 100%;
-  transition: opacity 0.3s ease;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+}
+
+.phone-screen-iframe::-webkit-scrollbar {
+  width: 4px;
+}
+
+.phone-screen-iframe::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 
 .phone-screen-loading-overlay {
   position: absolute;
   inset: 0;
-  z-index: 5;
+  z-index: 10;
 }

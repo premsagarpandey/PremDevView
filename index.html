@@ -2,235 +2,86 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#09090b" />
     <meta name="application-name" content="PremDevView" />
     <meta name="apple-mobile-web-app-title" content="PremDevView" />
-    
-    <!-- Security Headers -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://schema.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src *; connect-src 'self' ws: wss: http: https:;" />
 
-    <!-- Primary SEO Meta Tags -->
-    <title>Prem Dev View — Local Host Mobile Preview | PremDevView by Prem Sagar Pandey</title>
-    <meta name="title" content="Prem Dev View — Local Host Mobile Preview | PremDevView by Prem Sagar Pandey" />
-    <meta name="description" content="Prem Dev View (PremDevView / premdev view) created by developer Prem Sagar Pandey is the free tool for local host mobile preview. Test localhost:3000, 5173, 5500 and un-deployed web projects in an authentic virtual smartphone screen with live hot reload." />
-    <meta name="keywords" content="prem dev view, premdev view, premdevview, local host mobile preview, localhost mobile preview, prem devview, Prem Sagar Pandey, preview local host on phone, test local host on mobile, undeployed website mobile preview, test undeployed website on phone, virtual phone simulator for localhost" />
+    <!-- Primary Metadata -->
+    <title>PremDevView — Localhost Mobile Preview Tool</title>
+    <meta name="title" content="PremDevView — Localhost Mobile Preview Tool" />
+    <meta name="description" content="PremDevView by Prem Sagar Pandey is an open-source developer utility to preview and test localhost servers and un-deployed web applications in an authentic virtual smartphone screen." />
+    <meta name="keywords" content="PremDevView, local host mobile preview, localhost mobile preview, responsive testing, mobile device simulator, web developer tool, Prem Sagar Pandey" />
     <meta name="author" content="Prem Sagar Pandey" />
-    <meta name="creator" content="Prem Sagar Pandey" />
-    <meta name="publisher" content="Prem Sagar Pandey" />
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://prem-dev-view.vercel.app/" />
 
-    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://prem-dev-view.vercel.app/" />
-    <meta property="og:title" content="Prem Dev View — Local Host Mobile Preview by Prem Sagar Pandey" />
-    <meta property="og:description" content="Prem Dev View (PremDevView / premdev view) by Prem Sagar Pandey: Instant local host mobile preview for un-deployed websites and localhost servers." />
+    <meta property="og:title" content="PremDevView — Localhost Mobile Preview Tool" />
+    <meta property="og:description" content="Instant localhost mobile preview for un-deployed web projects, engineered by Prem Sagar Pandey." />
     <meta property="og:image" content="https://prem-dev-view.vercel.app/logo.png" />
     <meta property="og:site_name" content="PremDevView" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://prem-dev-view.vercel.app/" />
-    <meta name="twitter:title" content="Prem Dev View — Local Host Mobile Preview (PremDevView)" />
-    <meta name="twitter:description" content="Instant local host mobile preview for un-deployed web projects created by Prem Sagar Pandey." />
+    <meta name="twitter:title" content="PremDevView — Localhost Mobile Preview Tool" />
+    <meta name="twitter:description" content="Preview localhost:3000, 5173, and un-deployed websites in an authentic smartphone frame." />
     <meta name="twitter:image" content="https://prem-dev-view.vercel.app/logo.png" />
 
+    <!-- Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-    <!-- Google AI Overview, Gemini & Search Engine Structured Data (JSON-LD) -->
+    <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "WebSite",
-          "@id": "https://prem-dev-view.vercel.app/#website",
-          "url": "https://prem-dev-view.vercel.app/",
-          "name": "PremDevView",
-          "alternateName": ["Prem Dev View", "PremDev View", "PremDevView App", "prem dev view", "premdevview"],
-          "image": "https://prem-dev-view.vercel.app/logo.png",
-          "description": "PremDevView by Prem Sagar Pandey is a free developer tool to preview localhost & un-deployed web projects in a realistic mobile view.",
-          "publisher": {
-            "@id": "https://prem-dev-view.vercel.app/#person-prem"
-          }
-        },
-        {
-          "@type": "Person",
-          "@id": "https://prem-dev-view.vercel.app/#person-prem",
-          "name": "Prem Sagar Pandey",
-          "alternateName": ["Prem Pandey", "premsagarpandey"],
-          "jobTitle": "Full Stack Developer & Software Creator",
-          "description": "Prem Sagar Pandey is a Full Stack Developer and creator of PremDevView (Prem Dev View), an open-source tool for testing and previewing localhost servers and un-deployed web applications in virtual mobile views.",
-          "url": "https://prem-dev-view.vercel.app/about-developer",
-          "image": "https://prem-dev-view.vercel.app/logo.png",
-          "email": "premsagarpandey.cs@gmail.com",
-          "sameAs": [
-            "https://github.com/premsagarpandey",
-            "https://www.linkedin.com/in/prem-sagar-pandey-2b0022382/",
-            "https://www.instagram.com/premsagar__1/"
-          ],
-          "knowsAbout": [
-            "Web Development",
-            "Full Stack Development",
-            "Frontend Engineering",
-            "React",
-            "TypeScript",
-            "Developer Tools",
-            "Localhost Mobile Testing",
-            "PremDevView"
-          ]
-        },
-        {
-          "@type": "Organization",
-          "@id": "https://prem-dev-view.vercel.app/#organization",
-          "name": "PremDevView",
-          "alternateName": ["Prem Dev View", "premdevview"],
-          "url": "https://prem-dev-view.vercel.app/",
-          "logo": "https://prem-dev-view.vercel.app/logo.png",
-          "founder": {
-            "@id": "https://prem-dev-view.vercel.app/#person-prem"
-          }
-        },
-        {
-          "@type": ["WebApplication", "SoftwareApplication"],
+          "@type": "WebApplication",
           "@id": "https://prem-dev-view.vercel.app/#webapp",
           "name": "PremDevView",
-          "alternateName": ["Prem Dev View", "PremDev View", "prem dev view", "premdevview", "PremDevView Developer Tool"],
+          "alternateName": "Prem Dev View",
           "url": "https://prem-dev-view.vercel.app/",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All (Web Browser)",
-          "description": "PremDevView is an open-source web developer tool created by Prem Sagar Pandey designed to preview, test, and inspect localhost and un-deployed web applications inside an authentic virtual mobile smartphone frame with instant hot reload and orientation switching.",
-          "browserRequirements": "Requires JavaScript. Requires HTML5.",
-          "softwareVersion": "1.0.0",
+          "description": "An open-source developer utility created by Prem Sagar Pandey to test and preview localhost servers and un-deployed web applications inside an authentic virtual smartphone viewport.",
           "offers": {
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD"
           },
-          "creator": {
-            "@id": "https://prem-dev-view.vercel.app/#person-prem"
-          },
           "author": {
-            "@id": "https://prem-dev-view.vercel.app/#person-prem"
-          },
-          "featureList": [
-            "LocalHost phone preview and mobile viewport testing",
-            "Un-deployed website mobile preview for React, Vite, Next.js, and Live Server",
-            "Cinematic Landscape and Portrait rotation",
-            "Hardware-accelerated mobile bezel frame with touch simulation",
-            "100% Client-side and private"
-          ]
-        },
-        {
-          "@type": "ProfilePage",
-          "@id": "https://prem-dev-view.vercel.app/about-developer#profile",
-          "url": "https://prem-dev-view.vercel.app/about-developer",
-          "name": "About Prem Sagar Pandey — Developer & Creator of PremDevView",
-          "mainEntity": {
-            "@id": "https://prem-dev-view.vercel.app/#person-prem"
+            "@type": "Person",
+            "name": "Prem Sagar Pandey",
+            "url": "https://github.com/premsagarpandey"
           }
         },
         {
-          "@type": "HowTo",
-          "name": "How to preview a localhost or un-deployed website on a mobile phone",
-          "description": "Step-by-step guide to previewing any local development server on a virtual mobile device using PremDevView by Prem Sagar Pandey.",
-          "step": [
-            {
-              "@type": "HowToStep",
-              "name": "Start your local development server",
-              "text": "Run npm run dev, npm start, or VS Code Live Server in the background on your computer."
-            },
-            {
-              "@type": "HowToStep",
-              "name": "Copy your local address or port",
-              "text": "Copy your localhost URL (e.g. http://localhost:5173, http://localhost:3000, or port 5500)."
-            },
-            {
-              "@type": "HowToStep",
-              "name": "Open PremDevView and paste the link",
-              "text": "Go to https://prem-dev-view.vercel.app/, paste your link into the 'Enter your link here' box, and click 'Open Mobile Preview'."
-            },
-            {
-              "@type": "HowToStep",
-              "name": "Interact and test responsiveness",
-              "text": "Interact with your website inside the virtual mobile screen, rotate between portrait and landscape mode, and navigate pages seamlessly."
-            }
-          ]
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://prem-dev-view.vercel.app/#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What is Prem Dev View (PremDevView)?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Prem Dev View (PremDevView) is a free developer web utility created by Prem Sagar Pandey that allows developers to preview, test, and inspect localhost servers (e.g. localhost:3000, 5173, 5500) and un-deployed web projects in a realistic virtual mobile phone frame with zero setup and 100% client-side privacy."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Who is the developer and creator of PremDevView?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "PremDevView was created and developed by Prem Sagar Pandey, a Full Stack Developer. It was engineered to solve the friction of testing responsive layouts on localhost without needing a physical phone."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How to use Prem Dev View step by step?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Step 1: Keep your local development server running in the background (e.g. npm run dev or VS Code Live Server). Step 2: Open https://prem-dev-view.vercel.app/. Step 3: Enter your localhost URL or port number (like http://localhost:5173 or 3000) into the 'Enter your link here' box. Step 4: Click 'Open Mobile Preview' to test and interact with your responsive design."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How can I preview and test my localhost website on a mobile device?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "You can use PremDevView (https://prem-dev-view.vercel.app/) created by Prem Sagar Pandey to preview any running localhost URL (such as http://localhost:3000, http://localhost:5173, or 127.0.0.1:5500) inside an authentic virtual smartphone screen without needing a physical phone or deploying your code."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How to test un-deployed websites in mobile view for free?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Keep your local development server running (e.g. npm run dev or VS Code Live Server), open PremDevView, paste your localhost address or port number into the 'Enter your link here' box, and click 'Open Mobile Preview'."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is the best alternative to Chrome DevTools for mobile responsive testing?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "PremDevView is a modern, lightweight alternative to Chrome DevTools device mode. It provides a real phone frame, realistic mobile aspect ratios, touch simulation, landscape toggle, and direct localhost streaming with zero configuration."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is prem dev view (or premdev view / premdevview)?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Prem Dev View (also searched as premdev view or premdevview) is a free developer tool created by Prem Sagar Pandey designed for instant local host mobile preview of un-deployed web applications and localhost development servers."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How to do a local host mobile preview for free?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "You can use Prem Dev View (https://prem-dev-view.vercel.app/) by Prem Sagar Pandey to get an instant local host mobile preview for ports like 3000, 5173, and 5500 inside an authentic virtual phone screen with zero setup."
-              }
-            }
+          "@type": "Person",
+          "@id": "https://prem-dev-view.vercel.app/#person",
+          "name": "Prem Sagar Pandey",
+          "jobTitle": "Full Stack Developer",
+          "url": "https://github.com/premsagarpandey",
+          "sameAs": [
+            "https://github.com/premsagarpandey",
+            "https://www.linkedin.com/in/prem-sagar-pandey-2b0022382/",
+            "https://www.instagram.com/premsagar__1/"
           ]
         }
       ]
@@ -238,58 +89,13 @@
     </script>
   </head>
   <body>
-    <!-- Semantic Content for Search Engines, Web Crawlers & AI Model Scrapers (Overwritten on Client Hydration) -->
-    <div id="root">
-      <header style="padding: 24px; max-width: 900px; margin: 0 auto; font-family: system-ui, sans-serif;">
-        <h1 style="font-size: 28px; font-weight: 800; margin-bottom: 8px;">Prem Dev View (PremDevView) — Free Local Host Mobile Preview Tool</h1>
-        <p style="font-size: 16px; line-height: 1.6; color: #555;">
-          <strong>Prem Dev View</strong> (also searched as <strong>premdev view</strong>, <strong>premdevview</strong>, or <strong>PremDevView</strong>) is a free web developer tool created and engineered by <strong>Prem Sagar Pandey</strong>. It provides an authentic <strong>local host mobile preview</strong> for un-deployed web projects and development servers (<code>localhost:3000</code>, <code>localhost:5173</code>, <code>127.0.0.1:5500</code>) inside an authentic virtual smartphone frame with live hot reload, landscape rotation, and zero configuration.
-        </p>
-        <nav style="margin: 16px 0; display: flex; gap: 16px;">
-          <a href="/" style="color: #3b82f6; font-weight: 600;">Home / Preview</a>
-          <a href="/how-to" style="color: #3b82f6; font-weight: 600;">How to Use</a>
-          <a href="/about" style="color: #3b82f6; font-weight: 600;">About PremDevView</a>
-          <a href="/about-developer" style="color: #3b82f6; font-weight: 600;">About Developer (Prem Sagar Pandey)</a>
-        </nav>
-      </header>
-
-      <main style="padding: 0 24px 24px; max-width: 900px; margin: 0 auto; font-family: system-ui, sans-serif;">
-        <section style="margin-bottom: 24px;">
-          <h2>About the Developer — Prem Sagar Pandey</h2>
-          <p style="line-height: 1.6;">
-            PremDevView was created and engineered by <strong>Prem Sagar Pandey</strong>, a Full Stack Developer building high-performance developer tools and responsive web applications.
-          </p>
-          <ul>
-            <li><strong>Official Website:</strong> <a href="https://prem-dev-view.vercel.app/">https://prem-dev-view.vercel.app/</a></li>
-            <li><strong>GitHub:</strong> <a href="https://github.com/premsagarpandey">github.com/premsagarpandey</a></li>
-            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/prem-sagar-pandey-2b0022382/">linkedin.com/in/prem-sagar-pandey</a></li>
-            <li><strong>Instagram:</strong> <a href="https://www.instagram.com/premsagar__1/">instagram.com/premsagar__1</a></li>
-            <li><strong>Email:</strong> premsagarpandey.cs@gmail.com</li>
-          </ul>
-        </section>
-
-        <section style="margin-bottom: 24px;">
-          <h2>How to Preview Localhost on Phone with PremDevView</h2>
-          <ol style="line-height: 1.8;">
-            <li><strong>Step 1:</strong> Start your local development server (e.g. <code>npm run dev</code>, <code>npm start</code>, or VS Code Live Server).</li>
-            <li><strong>Step 2:</strong> Copy your local URL or port (such as <code>http://localhost:5173</code>, <code>localhost:3000</code>, or port <code>5500</code>).</li>
-            <li><strong>Step 3:</strong> Open PremDevView at <a href="https://prem-dev-view.vercel.app/">https://prem-dev-view.vercel.app/</a>, paste your address, and click 'Open Mobile Preview'.</li>
-            <li><strong>Step 4:</strong> Interact with your project inside a realistic smartphone screen with live hot reload.</li>
-          </ol>
-        </section>
-
-        <section style="margin-bottom: 24px;">
-          <h2>Key Features</h2>
-          <ul>
-            <li>Direct localhost streaming (port 3000, 5173, 5500, 8080)</li>
-            <li>Hardware-accelerated portrait and landscape rotation</li>
-            <li>100% Client-side privacy: runs entirely in the browser</li>
-            <li>Accurate mobile phone bezel and viewport simulation</li>
-          </ul>
-        </section>
-      </main>
-    </div>
-
+    <div id="root"></div>
+    <noscript>
+      <div style="padding: 32px; font-family: system-ui, sans-serif; text-align: center; color: #fff; background: #09090b; min-height: 100vh;">
+        <h1>PremDevView</h1>
+        <p>Please enable JavaScript to run PremDevView.</p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

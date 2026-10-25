@@ -4,41 +4,82 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 40px 24px;
+  padding: 36px 24px;
   text-align: center;
-  background: linear-gradient(180deg, #0c0c14 0%, #0a0a10 100%);
+  background: radial-gradient(circle at center, #181216 0%, #0d0a0d 100%);
+  gap: 12px;
+  box-sizing: border-box;
 }
 
-.error-state-icon {
-  font-size: 44px;
-  margin-bottom: 16px;
+.error-state-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
 }
 
 .error-state-title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  letter-spacing: -0.01em;
 }
 
 .error-state-description {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.45);
-  line-height: 1.5;
-  max-width: 240px;
-  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.55;
+  max-width: 260px;
+  margin: 0;
 }
 
 .error-state-tip {
-  font-size: 12px;
-  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+  max-width: 270px;
+}
+
+.error-tip-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .error-state-tip code {
   background: rgba(255, 255, 255, 0.08);
-  padding: 4px 10px;
-  border-radius: 4px;
-  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.85);
   font-size: 11px;
   font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  word-break: break-word;
+}
+
+.error-retry-btn {
+  margin-top: 8px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.error-retry-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
 }

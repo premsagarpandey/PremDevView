@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-import { validateUrl, isLocalOrDevUrl } from '../utils/urlValidation';
+import { validateUrl } from '../utils/urlValidation';
 
 export type PreviewStatus = 'idle' | 'loading' | 'loaded' | 'error';
 export type ErrorType = 'invalid-url' | 'connection' | 'iframe-blocked' | 'unknown';
@@ -10,66 +10,135 @@ export interface PreviewState {
   status: PreviewStatus;
   errorType: ErrorType | null;
   errorMessage: string;
+  canGoBack: boolean;
+  canGoForward: boolean;
 }
 
 export interface PreviewActions {
   loadUrl: (input: string) => void;
+  reload: () => void;
+  goBack: () => void;
+  goForward: () => void;
   onIframeLoad: () => void;
   onIframeError: () => void;
   iframeRef: React.RefObject<HTMLIFrameElement | null>;
 }
 
 export function usePreview(): [PreviewState, PreviewActions] {
-  const [currentUrl, setCurrentUrl] = useState('');
+  const [history, setHistory] = useState<string[]>([]);
+  const [historyIndex, setHistoryIndex] = useState<number>(-1);
+  const [reloadKey, setReloadKey] = useState<number>(0);
   const [status, setStatus] = useState<PreviewStatus>('idle');
   const [errorType, setErrorType] = useState<ErrorType | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
+
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const loadTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const loadUrl = useCallback(
-    (input: string) => {
-      const result = validateUrl(input);
-      if (!result.valid) {
-        setStatus('error');
-        setErrorType('invalid-url');
-        setErrorMessage(result.error || 'Please enter a valid URL.');
-        return;
-      }
+  const activeUrl = historyIndex >= 0 && historyIndex < history.length ? history[historyIndex] : '';
 
-      setCurrentUrl(result.url);
+  const loadUrl = useCallback((input: string) => {
+    const result = validateUrl(input);
+    if (!result.valid) {
+      setStatus('error');
+      setErrorType('invalid-url');
+      setErrorMessage(result.error || 'Please enter a valid URL.');
+      return;
+    }
+
+    const targetUrl = result.url;
+    setHistory((prev) => {
+      // Truncate forward history if navigating from an earlier point
+      const nextHistory = prev.slice(0, historyIndex + 1);
+      nextHistory.push(targetUrl);
+      return nextHistory;
+    });
+    setHistoryIndex((prev) => prev + 1);
+
+    setStatus('loading');
+    setErrorType(null);
+    setErrorMessage('');
+    setReloadKey(Date.now());
+
+    if (loadTimeoutRef.current) {
+      clearTimeout(loadTimeoutRef.current);
+    }
+    loadTimeoutRef.current = setTimeout(() => {
+      setStatus((prev) => (prev === 'loading' ? 'loaded' : prev));
+    }, 4000);
+  }, [historyIndex]);
+
+  const reload = useCallback(() => {
+    if (!activeUrl) return;
+
+    setStatus('loading');
+    setErrorType(null);
+    setErrorMessage('');
+    setReloadKey(Date.now());
+
+    // Try native reload on same-origin iframe if possible
+    try {
+      if (iframeRef.current?.contentWindow) {
+        iframeRef.current.contentWindow.location.reload();
+      }
+    } catch {
+      // Cross-origin fallback: reloadKey in src will force reload
+    }
+
+    if (loadTimeoutRef.current) {
+      clearTimeout(loadTimeoutRef.current);
+    }
+    loadTimeoutRef.current = setTimeout(() => {
+      setStatus((prev) => (prev === 'loading' ? 'loaded' : prev));
+    }, 4000);
+  }, [activeUrl]);
+
+  const goBack = useCallback(() => {
+    // Attempt iframe cross-origin navigation first
+    let navigatedInternally = false;
+    try {
+      if (iframeRef.current?.contentWindow?.history) {
+        iframeRef.current.contentWindow.history.back();
+        navigatedInternally = true;
+      }
+    } catch {
+      navigatedInternally = false;
+    }
+
+    // If internal navigation couldn't be confirmed or history index exists, fall back to history stack
+    if (!navigatedInternally && historyIndex > 0) {
+      setHistoryIndex((prev) => prev - 1);
       setStatus('loading');
-      setErrorType(null);
-      setErrorMessage('');
+      setReloadKey(Date.now());
+    }
+  }, [historyIndex]);
 
-      // Set a timeout to detect if the iframe fails to load or is taking too long
-      if (loadTimeoutRef.current) {
-        clearTimeout(loadTimeoutRef.current);
+  const goForward = useCallback(() => {
+    let navigatedInternally = false;
+    try {
+      if (iframeRef.current?.contentWindow?.history) {
+        iframeRef.current.contentWindow.history.forward();
+        navigatedInternally = true;
       }
-      loadTimeoutRef.current = setTimeout(() => {
-        // Force the iframe to become visible after 3 seconds.
-        // If the local server isn't running, this allows the user to see the browser's native 'Connection Refused' error.
-        setStatus((prev) => {
-          if (prev === 'loading') {
-            return 'loaded'; 
-          }
-          return prev;
-        });
-      }, 3000);
-    },
-    []
-  );
+    } catch {
+      navigatedInternally = false;
+    }
 
-
+    if (!navigatedInternally && historyIndex < history.length - 1) {
+      setHistoryIndex((prev) => prev + 1);
+      setStatus('loading');
+      setReloadKey(Date.now());
+    }
+  }, [historyIndex, history.length]);
 
   const onIframeLoad = useCallback(() => {
     if (loadTimeoutRef.current) {
       clearTimeout(loadTimeoutRef.current);
     }
-    if (currentUrl) {
+    if (activeUrl) {
       setStatus('loaded');
     }
-  }, [currentUrl]);
+  }, [activeUrl]);
 
   const onIframeError = useCallback(() => {
     if (loadTimeoutRef.current) {
@@ -80,31 +149,26 @@ export function usePreview(): [PreviewState, PreviewActions] {
     setErrorMessage("This website's security policy prevents embedded previews.");
   }, []);
 
-  // Derive the iframe src — append reload key to force refresh
-  let iframeSrc = currentUrl ? currentUrl : '';
-  
-  // To fulfill the requirement of previewing ANY link (including those that block iframes via X-Frame-Options),
-  // we route external links through a public CORS proxy.
-  // HOWEVER, we MUST NOT proxy local/dev environments (like 192.168.x.x or custom dev ports) 
-  // because public proxies cannot access private networks.
-  if (iframeSrc && !isLocalOrDevUrl(iframeSrc)) {
-    // Using corsproxy.io to strip X-Frame-Options headers for external sites
-    iframeSrc = `https://corsproxy.io/?${encodeURIComponent(iframeSrc)}`;
-  }
-
-  // Note: On initial load and every browser refresh, we start completely fresh:
-  // url is '', status is 'idle', phone screen shows EmptyState, input shows placeholder.
+  // Compute final iframe URL with reload key
+  const iframeSrc = activeUrl
+    ? `${activeUrl}${activeUrl.includes('?') ? '&' : '?'}_pdv_r=${reloadKey}`
+    : '';
 
   return [
     {
-      url: currentUrl,
+      url: activeUrl,
       currentUrl: iframeSrc,
       status,
       errorType,
       errorMessage,
+      canGoBack: historyIndex > 0,
+      canGoForward: historyIndex < history.length - 1,
     },
     {
       loadUrl,
+      reload,
+      goBack,
+      goForward,
       onIframeLoad,
       onIframeError,
       iframeRef,

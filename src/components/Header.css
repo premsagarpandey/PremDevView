@@ -6,70 +6,103 @@
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }
 
 .header-inner {
-  padding: 24px 16px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 28px;
 }
 
 .header-brand {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 12px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  text-align: center;
+  text-decoration: none;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  transition: opacity var(--transition-fast);
+}
+
+.header-brand:hover {
+  opacity: 0.9;
 }
 
 .header-logo {
-  width: 200px;
-  height: 200px;
+  width: 44px;
+  height: 44px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-brand-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.header-brand-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.header-brand-sub {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-tertiary);
 }
 
 .header-nav {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .header-nav-link {
-  background: none;
-  border: 1px solid transparent;
-  color: var(--text-secondary);
-  font-size: 14px;
-  font-weight: 500;
-  padding: 8px 14px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-  font-family: inherit;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.header-nav-link svg {
+  flex-shrink: 0;
+  color: var(--text-tertiary);
+  transition: color var(--transition-fast);
 }
 
 .header-nav-link:hover {
   color: var(--text-primary);
-  background: var(--bg-tertiary);
+  background: var(--bg-surface);
+}
+
+.header-nav-link:hover svg {
+  color: var(--text-primary);
 }
 
 .header-nav-link.active {
-  color: var(--bg-primary);
-  background: var(--text-primary);
+  color: var(--accent);
+  background: var(--accent-muted);
+  border-color: rgba(6, 182, 212, 0.25);
   font-weight: 600;
+}
+
+.header-nav-link.active svg {
+  color: var(--accent);
 }
 
 .header-footer {
@@ -81,18 +114,25 @@
 }
 
 .theme-toggle-btn {
-  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 14px;
+  background: var(--bg-surface);
   border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   color: var(--text-primary);
-  font-weight: 500;
-  padding: 10px 14px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
 .theme-toggle-btn:hover {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  border-color: var(--text-primary);
+  background: var(--bg-elevated);
+  border-color: var(--text-muted);
   transform: translateY(-1px);
 }
 
@@ -100,18 +140,9 @@
   transform: translateY(0);
 }
 
-.theme-toggle-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.theme-toggle-btn:hover .theme-toggle-icon {
-  transform: rotate(15deg) scale(1.1);
-}
-
+/* ============================================================
+   Mobile Navigation Header (< 768px)
+   ============================================================ */
 .mobile-header-bar {
   display: none;
 }
@@ -143,15 +174,12 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
+    text-decoration: none;
   }
 
   .mobile-header-logo {
-    width: 38px;
-    height: 38px;
+    width: 34px;
+    height: 34px;
     border-radius: 8px;
     object-fit: cover;
   }
@@ -163,7 +191,7 @@
   }
 
   .mobile-brand-name {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 800;
     color: var(--text-primary);
     line-height: 1.2;
@@ -171,7 +199,7 @@
   }
 
   .mobile-brand-tagline {
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 500;
     color: var(--text-tertiary);
   }
@@ -183,41 +211,38 @@
   }
 
   .mobile-action-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 8px;
-    background: var(--bg-tertiary);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
     border: 1px solid var(--border);
     color: var(--text-primary);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all var(--transition-fast);
   }
 
-  .mobile-action-btn:active {
-    transform: scale(0.92);
-    background: var(--text-primary);
-    color: var(--bg-primary);
+  .mobile-action-btn:hover {
+    background: var(--bg-elevated);
   }
 
-  .mobile-action-btn.hamburger-btn.open {
-    background: var(--text-primary);
-    color: var(--bg-primary);
-    border-color: var(--text-primary);
+  .mobile-action-btn.open {
+    background: var(--accent);
+    color: #000000;
+    border-color: var(--accent);
   }
 
-  /* Mobile Drawer Overlay */
   .mobile-menu-overlay {
     display: flex;
     position: fixed;
-    top: 59px;
+    top: 55px;
     left: 0;
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
     z-index: 199;
     animation: fadeIn 0.2s ease;
   }
@@ -229,21 +254,20 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-    animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    gap: 10px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .mobile-menu-nav {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
   }
 
   .mobile-menu-nav .header-nav-link {
     padding: 10px 14px;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 14.5px;
   }
 }
 
@@ -253,6 +277,6 @@
 }
 
 @keyframes slideDown {
-  from { transform: translateY(-12px); opacity: 0; }
+  from { transform: translateY(-10px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }

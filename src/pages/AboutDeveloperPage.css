@@ -2,7 +2,7 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  padding: var(--space-3xl) var(--space-xl);
+  padding: 48px 24px;
   overflow-y: auto;
   background: var(--bg-primary);
 }
@@ -12,7 +12,13 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
+  gap: 32px;
+}
+
+.about-dev-header-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .about-dev-page-title {
@@ -20,84 +26,88 @@
   font-weight: 800;
   color: var(--text-primary);
   letter-spacing: -0.03em;
-  margin-bottom: 4px;
+  margin: 0;
+}
+
+.about-dev-page-subtitle {
+  color: var(--text-secondary);
+  font-size: 14.5px;
+  margin: 0;
+  line-height: 1.5;
 }
 
 .about-dev-card {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 32px 28px;
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  gap: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .about-dev-header {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .about-dev-badge {
   align-self: flex-start;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--accent);
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.25);
-  padding: 4px 12px;
+  background: var(--accent-muted);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  padding: 3px 10px;
   border-radius: 999px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .about-dev-name {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 800;
   color: var(--text-primary);
   letter-spacing: -0.02em;
-  margin: 4px 0 0 0;
+  margin: 2px 0 0 0;
 }
 
 .about-dev-role {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--text-secondary);
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .about-dev-links {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
   width: 100%;
-  max-width: 520px;
 }
 
 .about-pill-btn {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   background: var(--bg-surface);
   color: var(--text-primary);
   border: 1px solid var(--border);
-  border-radius: 9999px;
-  padding: 14px 24px;
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-fast);
 }
 
 .about-pill-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   border-color: var(--text-muted);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  background: var(--bg-secondary);
-  color: var(--text-primary);
+  background: var(--bg-elevated);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .about-pill-icon {
@@ -114,44 +124,83 @@
 }
 
 .about-dev-section h3 {
-  font-size: var(--font-size-lg);
+  font-size: 17px;
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
 }
 
 .about-dev-section p {
-  font-size: var(--font-size-base);
+  font-size: 14px;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.65;
   margin: 0;
 }
 
+/* Facts Card */
+.about-dev-facts-card {
+  background: var(--bg-secondary);
+  padding: 20px 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
 
+.about-dev-facts-list {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.about-dev-facts-list a {
+  color: var(--accent);
+}
+
+/* FAQ Cards */
+.about-dev-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.about-dev-faq-card {
+  background: var(--bg-secondary);
+  padding: 16px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about-dev-faq-card h4 {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--text-primary);
+}
+
+.about-dev-faq-card p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Connect Card */
+.about-dev-connect-card {
+  background: var(--bg-secondary);
+  padding: 18px 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
 
 @media (max-width: 768px) {
   .about-dev-page {
     height: auto !important;
     padding: 24px 16px 48px 16px;
-  }
-
-  .about-dev-page-title {
-    font-size: 24px;
-  }
-
-  .about-dev-name {
-    font-size: 22px;
-  }
-
-  .about-dev-card {
-    padding: 20px 16px;
-  }
-
-  .about-pill-btn {
-    padding: 12px 16px;
-    font-size: 13.5px;
-    gap: 12px;
-    width: 100%;
-    box-sizing: border-box;
   }
 }

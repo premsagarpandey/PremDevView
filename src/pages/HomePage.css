@@ -1,5 +1,5 @@
 /* ============================================================
-   HomePage — Immersive Canvas Layout
+   HomePage — Modern Developer Canvas Layout
    ============================================================ */
 
 .canvas-layout {
@@ -8,163 +8,153 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  background: var(--bg-primary); /* Match screenshot canvas color */
+  background: var(--bg-primary);
   overflow: hidden;
   position: relative;
 }
 
-
-.toolbar-group {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  background: transparent;
-  padding: 0;
-  border: none;
-  box-shadow: none;
-}
-
-.top-right-toolbar {
+/* Floating Control Hub */
+.canvas-control-panel {
   position: absolute;
-  top: 24px;
+  top: 20px;
   right: 24px;
   z-index: 100;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  width: 360px;
+  max-width: calc(100vw - 48px);
+  pointer-events: auto;
 }
 
-.url-floating-group {
-  background: var(--text-primary);
-  padding: 16px; 
-  border-radius: 16px; 
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column; 
-  gap: 12px;
-  width: 320px; /* Increased from 240px to give more room for URLs */
-  box-sizing: border-box;
-}
-
-/* Invert colors inside the floating group for black/white theme */
-.url-floating-group .url-input-label {
-  display: block; 
-  color: var(--bg-primary);
-  opacity: 0.8;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 4px;
-  text-align: center;
-}
-
-.url-floating-group .url-input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-  margin: 0;
-}
-
-.url-floating-group .url-input-field {
-  background: rgba(128, 128, 128, 0.15); /* subtle inner background */
-  color: var(--bg-primary);
-  border: 1px solid rgba(128, 128, 128, 0.2);
-  height: 70px !important; /* Increased height even further */
-  width: 100%;
-  font-size: 16px;
-  padding: 0 16px;
-  border-radius: 4px; /* More rectangular sharp edges */
-  margin: 0;
-  box-sizing: border-box; /* Fix alignment overflow */
-}
-
-.url-floating-group .url-input-field:focus {
-  border-color: var(--bg-primary);
-  box-shadow: none;
-}
-
-.url-floating-group .url-input-field::placeholder {
-  color: var(--bg-primary);
-  opacity: 0.6;
-}
-
-.url-floating-group .url-input-submit {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  height: 30px !important; /* Even smaller height */
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 700;
-  width: auto !important; /* Not full width anymore */
-  padding: 0 16px !important; /* Just enough padding for the text */
-  margin: 0 auto; /* Center the button in the box */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box; /* Fix alignment overflow */
-  border: none;
-}
-
-.url-floating-group .url-input-submit:hover {
-  opacity: 0.9;
-}
-
-.toolbar-btn {
-  width: 40px;
-  height: 40px;
-  background: transparent;
-  color: var(--text-secondary);
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-
-.toolbar-btn.text-btn {
-  width: auto;
-  height: auto;
-  padding: 8px 12px;
-  border-radius: 16px;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0px;
-}
-
-/* Primary style: contrasting colors (black in light theme, white in dark theme) */
-.toolbar-btn.primary-btn {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.toolbar-btn.primary-btn:hover {
-  transform: translateY(-2px);
+.url-panel-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-  /* Slightly fade text or bg on hover if desired, but keep it solid */
-  opacity: 0.95;
+  backdrop-filter: blur(12px);
 }
 
-.toolbar-btn:active {
-  transform: translateY(1px) scale(0.95);
+.canvas-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
+/* Action Controls */
+.toolbar-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all var(--transition-fast);
+}
 
-/* ----------------------------------
-   Center Canvas Area
-   ---------------------------------- */
+.toolbar-action-btn:hover {
+  background: var(--bg-surface);
+  border-color: var(--text-muted);
+  transform: translateY(-1px);
+}
+
+.toolbar-action-btn:active {
+  transform: translateY(0);
+}
+
+.rotate-icon {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.rotate-icon.landscape {
+  transform: rotate(90deg);
+}
+
+.shortcut-badge {
+  font-size: 10px;
+  font-family: inherit;
+  font-weight: 700;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--text-tertiary);
+}
+
+/* Navigation Arrows & Reload Group */
+.toolbar-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.toolbar-icon-btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.toolbar-icon-btn:hover:not(:disabled) {
+  background: var(--bg-surface);
+  color: var(--accent);
+}
+
+.toolbar-icon-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.toolbar-icon-btn.reload-btn:hover:not(:disabled) svg {
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+/* Dimension Badge */
+.dimension-badge {
+  font-size: 11px;
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+/* Center Phone Canvas */
 .canvas-phone {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  height: 100%;
   width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: visible;
 }
 
 .mobile-intro-banner {
@@ -175,12 +165,8 @@
   display: none;
 }
 
-.mobile-controls-row {
-  display: contents;
-}
-
 /* ============================================================
-   Mobile & Android Responsive Styling (<= 768px)
+   Mobile & Responsive Adaptations (<= 768px)
    ============================================================ */
 @media (max-width: 768px) {
   .canvas-layout {
@@ -188,13 +174,11 @@
     height: auto !important;
     min-height: calc(100vh - 60px);
     overflow-y: visible !important;
-    padding: 16px 12px 48px 12px;
+    padding: 16px 14px 48px 14px;
     gap: 16px;
     justify-content: flex-start;
-    align-items: center;
   }
 
-  /* Mobile Intro Card */
   .mobile-intro-banner {
     display: flex;
     flex-direction: column;
@@ -203,7 +187,7 @@
     gap: 6px;
     width: 100%;
     max-width: 440px;
-    padding: 4px 12px 0 12px;
+    padding: 4px 8px;
   }
 
   .mobile-intro-badge {
@@ -222,11 +206,10 @@
   }
 
   .mobile-intro-heading {
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 800;
     color: var(--text-primary);
     letter-spacing: -0.02em;
-    line-height: 1.25;
     margin: 4px 0 0 0;
   }
 
@@ -237,79 +220,39 @@
     margin: 0;
   }
 
-  /* Responsive Toolbar & URL input */
-  .top-right-toolbar {
+  .canvas-control-panel {
     position: static !important;
     width: 100%;
     max-width: 440px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
   }
 
-  .url-floating-group {
-    width: 100% !important;
-    max-width: 100%;
-    padding: 14px;
-    border-radius: 14px;
-  }
-
-  .mobile-controls-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    gap: 8px;
-  }
-
-  .mobile-controls-row .toolbar-group {
-    margin-top: 0 !important;
-  }
-
-  .mobile-controls-row .orientation-group {
-    align-items: flex-start !important;
-  }
-
-  .mobile-controls-row .nav-arrows-group {
-    justify-content: flex-end !important;
-  }
-
-  /* Canvas Phone Area */
   .canvas-phone {
     width: 100%;
-    max-width: 100%;
     height: auto;
-    padding: 6px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: visible;
+    padding: 8px 0;
   }
 
-  /* Mobile Desktop Notice Card */
   .mobile-desktop-notice {
     display: flex;
     align-items: flex-start;
     gap: 12px;
     background: var(--bg-secondary);
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     padding: 14px 16px;
     width: 100%;
     max-width: 440px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-    box-sizing: border-box;
   }
 
   .mobile-desktop-notice .notice-icon {
-    font-size: 22px;
+    font-size: 20px;
     flex-shrink: 0;
-    line-height: 1;
-    margin-top: 2px;
+    margin-top: 1px;
   }
 
   .mobile-desktop-notice .notice-content h4 {
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 700;
     color: var(--text-primary);
     margin: 0 0 4px 0;
@@ -330,7 +273,3 @@
     color: var(--accent);
   }
 }
-
-
-
-

@@ -25,17 +25,17 @@ const pageToPath: Record<Page, string> = {
 };
 
 const pageTitles: Record<Page, string> = {
-  home: 'Prem Dev View — Local Host Mobile Preview | PremDevView by Prem Sagar Pandey',
-  'how-to': 'How to Use Prem Dev View — Local Host Mobile Preview Tutorial',
-  about: 'About Prem Dev View (PremDevView) — Local Host Mobile Previewer',
-  'about-developer': 'About Prem Sagar Pandey — Creator of Prem Dev View (PremDevView)',
+  home: 'PremDevView — Localhost Mobile Preview Tool',
+  'how-to': 'How to Use PremDevView — Step-by-Step Developer Guide',
+  about: 'About PremDevView — Architecture & Compatibility',
+  'about-developer': 'About Developer — Prem Sagar Pandey',
 };
 
 const pageDescriptions: Record<Page, string> = {
-  home: 'Prem Dev View (also known as premdev view / premdevview) by Prem Sagar Pandey is the free developer tool for local host mobile preview and localhost website testing in an authentic virtual smartphone screen.',
-  'how-to': 'Learn how to get a local host mobile preview for localhost:3000, localhost:5173, and un-deployed web applications using Prem Dev View by Prem Sagar Pandey.',
-  about: 'Prem Dev View (PremDevView) is a lightweight developer tool created by Prem Sagar Pandey to preview local host and un-deployed websites in an authentic virtual phone screen.',
-  'about-developer': 'Prem Sagar Pandey is a Full Stack Developer and creator of Prem Dev View (PremDevView), the free local host mobile preview tool. Connect on LinkedIn, GitHub, and Instagram.',
+  home: 'PremDevView by Prem Sagar Pandey is an open-source developer tool to preview and test localhost servers and un-deployed web applications in an authentic virtual smartphone screen.',
+  'how-to': 'Learn how to preview localhost:3000, 5173, and un-deployed web projects in an authentic virtual mobile viewport using PremDevView.',
+  about: 'PremDevView is a lightweight developer tool created by Prem Sagar Pandey to preview local servers and web projects in a realistic phone screen.',
+  'about-developer': 'Prem Sagar Pandey is a Full Stack Developer and software creator of PremDevView. Connect via GitHub, LinkedIn, or email.',
 };
 
 function getInitialPage(): Page {
@@ -67,7 +67,7 @@ function App() {
     window.scrollTo(0, 0);
   }, [syncMeta]);
 
-  // Handle browser back/forward buttons
+  // Handle browser back and forward navigation
   useEffect(() => {
     const handlePopState = () => {
       const path = window.location.pathname.toLowerCase().replace(/\/$/, '') || '/';
@@ -84,9 +84,9 @@ function App() {
 
   return (
     <div className="app-layout">
-      <Header 
-        currentPage={currentPage} 
-        onNavigate={handleNavigate} 
+      <Header
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
         theme={theme}
         toggleTheme={toggleTheme}
       />
@@ -101,4 +101,3 @@ function App() {
 }
 
 export default App;
-
